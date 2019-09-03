@@ -10,6 +10,9 @@
       :width="width"
       :height="height"
     >
+      <v-avatar color="indigo">
+        <v-icon dark>mdi-account-circle</v-icon>
+      </v-avatar>
       <v-img v-if="media" max-height="600" :height="height" :src="images.profile"></v-img>
       <v-card-title v-else>I'm a title</v-card-title>
 
@@ -31,11 +34,10 @@
         <v-btn icon>
           <v-icon>mdi-share-variant</v-icon>
         </v-btn>
-        <br />
       </v-card-actions>
-      <v-card-title>
-        <span class="grey--text subtitle-1">View all comments</span>
-      </v-card-title>
+
+      <v-card-text>40,000 likes</v-card-text>
+      <span class="grey--text ml-4">View all comments</span>
     </v-card>
   </div>
 </template>
