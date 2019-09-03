@@ -1,0 +1,45 @@
+<template>
+  <v-app-bar app color dense>
+    <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
+
+    <v-toolbar-title class="logo-text">Hlu Mal</v-toolbar-title>
+
+    <v-spacer></v-spacer>
+
+    <v-btn icon>
+      <v-icon>mdi-heart</v-icon>
+    </v-btn>
+
+    <v-btn icon>
+      <v-icon>mdi-magnify</v-icon>
+    </v-btn>
+
+    <v-menu left bottom>
+      <template v-slot:activator="{ on }">
+        <v-btn icon v-on="on">
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+      </template>
+
+      <v-list>
+        <v-list-item v-for="n in 5" :key="n" @click="() => {}">
+          <v-list-item-title>Option {{ n }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+  </v-app-bar>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style lang="scss">
+$main-color: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
+.logo-text {
+  font-family: "Pacifico", cursive;
+  background: $main-color;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+</style>
