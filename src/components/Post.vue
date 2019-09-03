@@ -14,6 +14,10 @@
           <v-img :src="images.profile"></v-img>
         </v-avatar>
         <v-card-title style="font-size:15px">Nezuko_nezuko</v-card-title>
+        <div class="flex-grow-1"></div>
+        <v-btn icon class="mr-7 mt-5">
+          <v-icon>mdi-dots-horizontal</v-icon>
+        </v-btn>
       </v-layout>
 
       <v-img
