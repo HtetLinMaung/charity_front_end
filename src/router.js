@@ -9,8 +9,14 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [{
-    path: '/',
-    name: 'post',
-    component: Post,
-  }],
+      path: '/',
+      name: 'post',
+      component: Post,
+    },
+    {
+      path: "/messages",
+      name: "messages",
+      component: () => import(`@/views/Messages.vue`)
+    }
+  ],
 });
