@@ -80,7 +80,7 @@ export default {
     height: undefined,
     images: {
       // eslint-disable-next-line global-require
-      profile: require("@/assets/I.jpeg")
+      profile: require('@/assets/I.jpeg'),
       // eslint-disable-next-line comma-dangle
     }
   }),
@@ -90,9 +90,9 @@ export default {
       this.clearMessage();
     },
     clearMessage() {
-      this.message = "";
-    }
-  }
+      this.message = '';
+    },
+  },
 };
 </script>
 <style scoped>
