@@ -1,13 +1,14 @@
 <template>
-  <HelloWorld />
+  <Post />
 </template>
 
 <script>
-import HelloWorld from '../components/HelloWorld';
+// eslint-disable-next-line import/no-unresolved
+import Post from '../components/Post.vue';
 
 export default {
   components: {
-    HelloWorld,
+    Post,
   },
 };
 </script>

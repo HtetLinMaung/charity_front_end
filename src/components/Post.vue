@@ -17,8 +17,13 @@
         <v-card-title style="font-size:15px">Nezuko_nezuko</v-card-title>
       </v-layout>
 
-      <v-img v-if="media" max-height="600" :height="height" :src="images.profile"></v-img>
-      <v-card-title v-else>I'm a title</v-card-title>
+      <v-img
+        class="image-wrapper"
+        v-if="media"
+        max-height="600"
+        :height="height"
+        :src="images.profile"
+      ></v-img>
 
       <v-card-text>I'm Nezuko</v-card-text>
       <v-card-actions v-if="actions">
@@ -53,7 +58,7 @@ export default {
     loading: false,
     actions: true,
     outlined: false,
-    elevation: undefined,
+
     raised: true,
     width: 650,
     height: undefined,
