@@ -48,13 +48,17 @@
         </v-btn>
       </v-card-actions>
       <v-card-text class="adjust">40,000 likes</v-card-text>
-      <v-card-text class="grey--text adjust" style="font-size:12px">View all comments</v-card-text>
+      <v-card-text
+        class="grey--text adjust"
+        style="font-size:12px;margin-bottom:-1rem;"
+      >View all comments</v-card-text>
+
       <v-text-field
+      solo
+        class="custom ml-5 mr-5 "
         v-model="comment"
-        filled
         clear-icon="mdi-close-circle"
         clearable
-        type="text"
         append-outer-icon="mdi-send "
         @click:append-outer="sendMessage"
         placeholder="Add a comment..."
@@ -95,10 +99,22 @@ export default {
 .v-input__slider {
   width: 100%;
 }
+.v-input__control {
+  -webkit-box-direction: normal !important;
+}
 .card {
   border-radius: 10px;
 }
 .adjust {
   padding-top: 0% !important;
+  margin-top: -0.5rem;
+}
+.custom {
+  margin-bottom: -1rem !important;
+}
+ .v-text-field.v-text-field--solo .v-input__control .v-text-field__details .custom{
+   
+    margin-bottom: -2.5rem !important;
+    padding: 0;
 }
 </style>
