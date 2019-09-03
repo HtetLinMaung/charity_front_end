@@ -10,9 +10,13 @@
       :width="width"
       :height="height"
     >
-      <v-avatar color="indigo">
-        <v-icon dark>mdi-account-circle</v-icon>
-      </v-avatar>
+      <v-layout row>
+        <v-avatar class="mt-3 ml-5 mb-3" size="48">
+          <v-img src="https://randomuser.me/api/portraits/women/85.jpg"></v-img>
+        </v-avatar>
+        <v-card-title style="font-size:15px">Nezuko_nezuko</v-card-title>
+      </v-layout>
+
       <v-img v-if="media" max-height="600" :height="height" :src="images.profile"></v-img>
       <v-card-title v-else>I'm a title</v-card-title>
 
