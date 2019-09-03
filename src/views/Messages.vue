@@ -7,8 +7,9 @@
         <v-card max-width="344" class="ml-auto mt-auto">
           <v-card-title class="m_card_title"><v-icon>mdi-message</v-icon>&nbsp;I'm a title</v-card-title>
           <v-card-text>I'm card text</v-card-text>
+          <v-textarea></v-textarea>
           <v-card-actions>
-            <v-btn text>Click</v-btn>
+            <v-btn text>Send</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
