@@ -12,7 +12,7 @@
     >
       <v-layout row>
         <v-avatar class="mt-3 ml-5 mb-3" size="48">
-          <v-img src="https://randomuser.me/api/portraits/women/85.jpg"></v-img>
+          <v-img :src="images.profile"></v-img>
         </v-avatar>
         <v-card-title style="font-size:15px">Nezuko_nezuko</v-card-title>
       </v-layout>
