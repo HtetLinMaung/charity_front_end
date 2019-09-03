@@ -15,11 +15,10 @@
 
       <v-card-text>I'm Nezuko</v-card-text>
       <v-card-actions v-if="actions">
-        <v-btn icon class="ml-5">
+        <v-btn icon>
           <v-icon>mdi-heart-outline</v-icon>
-          <span class="subheading mr-2">40,000</span>
         </v-btn>
-        <v-btn icon class="ml-5">
+        <v-btn icon>
           <v-icon>mdi-comment-processing-outline</v-icon>
         </v-btn>
         <v-btn icon>
