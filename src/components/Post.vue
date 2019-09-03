@@ -5,7 +5,6 @@
       :flat="flat"
       :loading="loading"
       :outlined="outlined"
-      :elevation="elevation"
       :raised="raised"
       :width="width"
       :height="height"
@@ -48,7 +47,6 @@
       <v-card-text class="grey--text adjust" style="font-size:12px">View all comments</v-card-text>
       <v-text-field
         v-model="comment"
-        :prepend-icon="icon"
         filled
         clear-icon="mdi-close-circle"
         clearable
@@ -70,7 +68,7 @@ export default {
     actions: true,
     outlined: false,
     raised: true,
-    width: 650,
+    width: 500,
     height: undefined,
     images: {
       // eslint-disable-next-line global-require
