@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app color dense>
+  <v-app-bar app color dense class="social-toolbar">
     <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
     <v-toolbar-title class="logo-text">Hlu Mal</v-toolbar-title>
@@ -41,5 +41,10 @@ $main-color: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
   background: black;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.social-toolbar {
+  .v-toolbar__content {
+    margin: 0 6rem;
+  }
 }
 </style>
