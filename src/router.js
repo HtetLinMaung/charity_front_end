@@ -10,8 +10,8 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [{
     path: '/',
-    name: 'post',
-    component: Post,
+    name: 'home',
+    component: Home,
   },
   {
     path: '/messages',
