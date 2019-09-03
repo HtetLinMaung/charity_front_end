@@ -38,7 +38,7 @@ export default {};
 $main-color: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
 .logo-text {
   font-family: "Pacifico", cursive;
-  background: $main-color;
+  background: black;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
