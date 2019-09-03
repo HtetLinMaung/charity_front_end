@@ -1,5 +1,5 @@
 <template>
-  <div class="post mt-5">
+  <div class="post mt-5 mb-10">
     <v-card
       class="mx-auto card"
       :flat="flat"
@@ -20,13 +20,13 @@
       <v-img
         class="image-wrapper"
         v-if="media"
-        max-height="600"
+        max-height="550"
         :height="height"
         :src="images.profile"
       ></v-img>
 
       <v-card-text>I'm Nezuko</v-card-text>
-      <v-card-actions v-if="actions">
+      <v-card-actions v-if="actions" class="adjust">
         <v-btn icon>
           <v-icon>mdi-heart-outline</v-icon>
         </v-btn>
@@ -44,30 +44,49 @@
           <v-icon>mdi-share-variant</v-icon>
         </v-btn>
       </v-card-actions>
-
-      <v-card-text>40,000 likes</v-card-text>
-      <span class="grey--text ml-4">View all comments</span>
+      <v-card-text class="adjust">40,000 likes</v-card-text>
+      <v-card-text class="grey--text adjust" style="font-size:12px">View all comments</v-card-text>
+      <v-text-field
+        v-model="comment"
+        :prepend-icon="icon"
+        filled
+        clear-icon="mdi-close-circle"
+        clearable
+        type="text"
+        append-outer-icon="mdi-send "
+        @click:append-outer="sendMessage"
+        placeholder="Add a comment..."
+      ></v-text-field>
     </v-card>
   </div>
 </template>
 <script>
 export default {
   data: () => ({
+    comment: null,
     flat: false,
     media: true,
     loading: false,
     actions: true,
     outlined: false,
-
     raised: true,
     width: 650,
     height: undefined,
     images: {
       // eslint-disable-next-line global-require
-      profile: require('@/assets/I.jpeg'),
+      profile: require("@/assets/I.jpeg")
       // eslint-disable-next-line comma-dangle
     }
   }),
+  methods: {
+    sendMessage() {
+      this.resetIcon();
+      this.clearMessage();
+    },
+    clearMessage() {
+      this.message = "";
+    }
+  }
 };
 </script>
 <style scoped>
@@ -76,5 +95,8 @@ export default {
 }
 .card {
   border-radius: 10px;
+}
+.adjust {
+  padding-top: 0% !important;
 }
 </style>
