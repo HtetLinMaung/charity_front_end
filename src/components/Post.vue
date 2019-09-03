@@ -54,8 +54,8 @@
       >View all comments</v-card-text>
 
       <v-text-field
-      solo
-        class="custom ml-5 mr-5 "
+        solo
+        class="custom"
         v-model="comment"
         clear-icon="mdi-close-circle"
         clearable
@@ -80,7 +80,7 @@ export default {
     height: undefined,
     images: {
       // eslint-disable-next-line global-require
-      profile: require('@/assets/I.jpeg'),
+      profile: require("@/assets/I.jpeg")
       // eslint-disable-next-line comma-dangle
     }
   }),
@@ -90,9 +90,9 @@ export default {
       this.clearMessage();
     },
     clearMessage() {
-      this.message = '';
-    },
-  },
+      this.message = "";
+    }
+  }
 };
 </script>
 <style scoped>
@@ -104,17 +104,13 @@ export default {
 }
 .card {
   border-radius: 10px;
+  margin-bottom: 0px;
+}
+.card .v-input__slot {
+  margin-bottom: -100px !important;
 }
 .adjust {
   padding-top: 0% !important;
   margin-top: -0.5rem;
-}
-.custom {
-  margin-bottom: -1rem !important;
-}
- .v-text-field.v-text-field--solo .v-input__control .v-text-field__details .custom{
-   
-    margin-bottom: -2.5rem !important;
-    padding: 0;
 }
 </style>
