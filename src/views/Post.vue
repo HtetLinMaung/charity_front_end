@@ -1,7 +1,7 @@
 <template>
   <div class="post mt-5">
     <v-card
-      class="mx-auto"
+      class="mx-auto card"
       :flat="flat"
       :loading="loading"
       :outlined="outlined"
@@ -10,22 +10,16 @@
       :width="width"
       :height="height"
     >
-      <v-img
-        v-if="media"
-        class="white--text"
-        height="500px"
-        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-      >
-        <v-card-title class="align-end fill-height">I'm a title</v-card-title>
-      </v-img>
+      <v-img v-if="media" max-height="600" :height="height" :src="images.profile"></v-img>
       <v-card-title v-else>I'm a title</v-card-title>
 
-      <v-card-text>I'm card text</v-card-text>
+      <v-card-text>I'm Nezuko</v-card-text>
       <v-card-actions v-if="actions">
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
+        <v-btn icon class="ml-5">
+          <v-icon>mdi-heart-outline</v-icon>
+          <span class="subheading mr-2">40,000</span>
         </v-btn>
-        <v-btn icon>
+        <v-btn icon class="ml-5">
           <v-icon>mdi-comment-processing-outline</v-icon>
         </v-btn>
         <v-btn icon>
@@ -33,34 +27,44 @@
         </v-btn>
         <div class="flex-grow-1"></div>
         <v-btn icon>
-          <v-icon>mdi-bookmark</v-icon>
+          <v-icon>mdi-bookmark-outline</v-icon>
         </v-btn>
         <v-btn icon>
           <v-icon>mdi-share-variant</v-icon>
         </v-btn>
+        <br />
       </v-card-actions>
+      <v-card-title>
+        <span class="grey--text subtitle-1">View all comments</span>
+      </v-card-title>
     </v-card>
   </div>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      flat: false,
-      media: true,
-      loading: false,
-      actions: true,
-      outlined: false,
-      elevation: undefined,
-      raised: false,
-      width: 650,
-      height: undefined,
-    };
-  },
+  data: () => ({
+    flat: false,
+    media: true,
+    loading: false,
+    actions: true,
+    outlined: false,
+    elevation: undefined,
+    raised: true,
+    width: 650,
+    height: undefined,
+    images: {
+      // eslint-disable-next-line global-require
+      profile: require('@/assets/I.jpeg'),
+      // eslint-disable-next-line comma-dangle
+    }
+  }),
 };
 </script>
 <style scoped>
 .v-input__slider {
   width: 100%;
+}
+.card {
+  border-radius: 10px;
 }
 </style>
