@@ -10,6 +10,9 @@
         <Post />
       </v-flex>
     </v-layout>
+    <v-layout>
+      <Messages />
+    </v-layout>
   </v-container>
 </template>
 
@@ -17,11 +20,13 @@
 // eslint-disable-next-line import/no-unresolved
 import Post from '../components/Post.vue';
 import CreatePost from '@/views/CreatePost.vue';
+import Messages from '@/views/Messages.vue';
 
 export default {
   components: {
     Post,
     CreatePost,
+    Messages
   },
 };
 </script>
