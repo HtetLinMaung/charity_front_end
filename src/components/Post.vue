@@ -15,9 +15,30 @@
         </v-avatar>
         <v-card-title style="font-size:15px;font-weight:bold;">Kyi Sin Thant</v-card-title>
         <div class="flex-grow-1"></div>
-        <v-btn icon class="mr-7 mt-5" @click="option">
+        <!-- <v-btn icon class="mr-7 mt-5" @click="option">
           <v-icon>mdi-dots-horizontal</v-icon>
-        </v-btn>
+        </v-btn>-->
+
+        <v-menu transition="scroll-x-reverse-transition" width="400">
+          <template v-slot:activator="{ on }">
+            <v-btn icon class="mr-7 mt-5" v-on="on">
+              <v-icon>mdi-dots-horizontal</v-icon>
+            </v-btn>
+          </template>
+          <v-card class="mx-auto" tile>
+            <v-list rounded>
+              <v-list-item-group color="primary">
+                <v-list-item>Hide Post</v-list-item>
+
+                <v-list-item>Delete Post</v-list-item>
+
+                <v-list-item>Edit Post</v-list-item>
+
+                <v-list-item>Privacy</v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-card>
+        </v-menu>
       </v-layout>
 
       <v-img
@@ -66,12 +87,27 @@
         placeholder="Add a comment..."
       ></v-text-field>
     </v-card>
+
+    <!-- <v-dialog v-model="optionbox" max-width="290">
+      <v-card class="mx-auto" max-width="300" tile>
+        <v-list rounded>
+          <v-list-item-group color="primary">
+            <v-list-item>Hide Post</v-list-item>
+            <v-divider></v-divider>
+            <v-list-item>Delete Post</v-list-item>
+            <v-divider></v-divider>
+            <v-list-item>Edit Post</v-list-item>
+            <v-divider></v-divider>
+            <v-list-item>Privacy</v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-card>
+    </v-dialog>-->
   </div>
 </template>
 <script>
 export default {
   data: () => ({
-    optionbox: false,
     comment: null,
     flat: false,
     media: true,
@@ -94,10 +130,6 @@ export default {
     },
     clearMessage() {
       this.message = '';
-    },
-    option() {
-      const self = this;
-      self.optionbox = true;
     },
   },
 };
