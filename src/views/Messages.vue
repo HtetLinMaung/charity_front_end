@@ -1,7 +1,6 @@
 <template>
   <div class="messages">
 
-    <v-layout row>
       <v-col class="message_card" align="end" justify="end">
         <v-card max-width="344" class="ml-auto mt-auto">
           <v-card-title>
@@ -24,7 +23,6 @@
           <v-text-field filled append-icon="mdi-emoticon-poop" label="message pote mal"></v-text-field>
         </v-card>
       </v-col>
-    </v-layout>
     <!-- xaxa -->
       <h1>haha</h1><br>
       <h1>haha</h1><br>
