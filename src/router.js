@@ -23,5 +23,10 @@ export default new Router({
     name: 'createpost',
     component: () => import('@/views/CreatePost.vue'),
   },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('@/views/Profile.vue'),
+  },
   ],
 });
