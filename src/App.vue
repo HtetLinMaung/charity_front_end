@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import NavBar from './components/NavBar';
-import NavDrawer from './components/NavDrawer';
+import NavBar from "./components/NavBar";
+import NavDrawer from "./components/NavDrawer";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    'nav-bar': NavBar,
-    'nav-drawer': NavDrawer,
+    "nav-bar": NavBar,
+    "nav-drawer": NavDrawer
   },
   data: () => ({
     //
-  }),
+  })
 };
 </script>
