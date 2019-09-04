@@ -24,7 +24,7 @@
       </v-layout>
     </v-card>
     <v-row justify="center">
-      <v-dialog v-model="dialog" max-width="700">
+      <v-dialog v-model="dialog" max-width="550">
         <v-card class="dcard">
           <v-layout row>
             <v-avatar class="mt-3 ml-10 mb-3" size="40">
@@ -110,6 +110,7 @@ export default {
 }
 .dcard {
   overflow: hidden;
+  border-radius: 15px;
 }
 .text {
   color: gray;
@@ -117,5 +118,8 @@ export default {
 }
 .tag {
   margin-top: -2.6rem;
+}
+.card{
+  border-radius: 10px;
 }
 </style>

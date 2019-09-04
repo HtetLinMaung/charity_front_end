@@ -128,7 +128,7 @@ export default {
   -webkit-box-direction: normal !important;
 }
 .card {
-  border-radius: 10px;
+  border-radius: 30px;
   margin-bottom: -2rem;
 }
 .card .v-input__slot {
