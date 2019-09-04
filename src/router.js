@@ -18,5 +18,10 @@ export default new Router({
     name: 'messages',
     component: () => import('@/views/Messages.vue'),
   },
+  {
+    path: '/createpost',
+    name: 'createpost',
+    component: () => import('@/views/CreatePost.vue'),
+  },
   ],
 });
