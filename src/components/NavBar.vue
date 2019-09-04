@@ -10,7 +10,7 @@
     <v-btn icon @click="redirect('/')">
       <v-icon>mdi-home-outline</v-icon>
     </v-btn>
-    <v-btn icon>
+    <v-btn icon @click="redirect('/profile')">
       <v-icon>mdi-account-outline</v-icon>
     </v-btn>
     <v-btn icon>
