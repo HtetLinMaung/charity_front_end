@@ -14,6 +14,7 @@
         <v-avatar class="mt-3 ml-5 mb-3" size="40">
           <v-img :src="images.profile"></v-img>
         </v-avatar>
+        <v-card-title class="text">What's on your mind?</v-card-title>
       </v-layout>
     </v-card>
   </div>
@@ -38,4 +39,8 @@ export default {
 };
 </script>
 <style scoped>
+.text {
+  color: gray;
+  font-size: 1rem;
+}
 </style>
