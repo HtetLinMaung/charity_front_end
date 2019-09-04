@@ -15,7 +15,7 @@
         </v-avatar>
         <v-card-title style="font-size:15px;font-weight:bold;">Kyi Sin Thant</v-card-title>
         <div class="flex-grow-1"></div>
-        <v-btn icon class="mr-7 mt-5">
+        <v-btn icon class="mr-7 mt-5" @click="option">
           <v-icon>mdi-dots-horizontal</v-icon>
         </v-btn>
       </v-layout>
@@ -71,6 +71,7 @@
 <script>
 export default {
   data: () => ({
+    optionbox: false,
     comment: null,
     flat: false,
     media: true,
@@ -93,6 +94,10 @@ export default {
     },
     clearMessage() {
       this.message = '';
+    },
+    option() {
+      const self = this;
+      self.optionbox = true;
     },
   },
 };

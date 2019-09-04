@@ -1,5 +1,11 @@
 <template>
-  <Post />
+  <v-container>
+    <v-layout>
+      <v-flex xs12 sm5 md5 offset-xs0 offset-lg2>
+        <Post />
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
