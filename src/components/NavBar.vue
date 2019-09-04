@@ -45,7 +45,7 @@ $main-color: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
 .flex-container {
   display: flex;
 }
-@media all and (max-width: 375px) {
+@media all and (max-width: 414px) {
   .logo-text {
     display: hidden;
   }
