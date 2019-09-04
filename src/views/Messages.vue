@@ -3,10 +3,10 @@
 
       <v-col class="card_message" align="end" justify="end">
         <v-card max-width="344" class="ml-auto mt-auto">
-          <v-card-title>
-            <v-icon>mdi-message</v-icon>&nbsp;Chat Mal
+          <v-card-title @click="show_message_toggle = !show_message_toggle">
+            <v-icon>mdi-message</v-icon>&nbsp;<b>Chat Mal </b><i>(Wai Yan)</i>
           </v-card-title>
-          <v-card-text>
+          <v-card-text v-show="show_message_toggle">
               <p :class="{ received: isReceived }"><span>hola</span></p>
               <p :class="{ send: isReceived }"><span>hello</span></p>
               <p :class="{ send: isReceived }"><span>hello</span></p>
@@ -20,7 +20,7 @@
               <p :class="{ received: isReceived }"><span>text1</span></p>
               <p :class="{ received: isReceived }"><span>text1</span></p>
           </v-card-text>
-          <v-text-field filled append-icon="mdi-emoticon-poop" label="message pote mal"></v-text-field>
+          <v-text-field v-show="show_message_toggle" filled append-icon="mdi-emoticon-poop" label="message pote mal"></v-text-field>
         </v-card>
       </v-col>
   
@@ -32,6 +32,7 @@
 export default {
   data: () => ({
     isReceived: true,
+    show_message_toggle: true,
   }),
 };
 </script>

@@ -1,10 +1,7 @@
 <template>
   <div class="sidebar">
       <v-col class="card_sidebar" align="end" justify="end">
-        <v-card
-                max-width="344"
-                class="mx-auto"
-            >
+        <v-card max-width="344" class="mx-auto">
                 <v-card-title><span>Stories</span></v-card-title>
                 <v-card-text>
                     <ul>
