@@ -13,6 +13,9 @@
     <v-layout>
       <Messages />
     </v-layout>
+    <v-layout>
+      <Sidebar />
+    </v-layout>
   </v-container>
 </template>
 
@@ -21,12 +24,14 @@
 import Post from '../components/Post.vue';
 import CreatePost from '@/views/CreatePost.vue';
 import Messages from '@/views/Messages.vue';
+import Sidebar from '@/views/Sidebar.vue';
 
 export default {
   components: {
     Post,
     CreatePost,
-    Messages
+    Messages,
+    Sidebar
   },
 };
 </script>
