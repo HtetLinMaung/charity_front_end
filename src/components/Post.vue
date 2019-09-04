@@ -13,7 +13,7 @@
         <v-avatar class="mt-3 ml-5 mb-3" size="48">
           <v-img :src="images.profile"></v-img>
         </v-avatar>
-        <v-card-title style="font-size:15px">Nezuko_nezuko</v-card-title>
+        <v-card-title style="font-size:15px;font-weight:bold;">Kyi Sin Thant</v-card-title>
         <div class="flex-grow-1"></div>
         <v-btn icon class="mr-7 mt-5">
           <v-icon>mdi-dots-horizontal</v-icon>
@@ -28,7 +28,7 @@
         :src="images.profile"
       ></v-img>
 
-      <v-card-text>I'm Nezuko</v-card-text>
+      <v-card-text style="font-weight:bold">Hello...........</v-card-text>
       <v-card-actions v-if="actions" class="adjust">
         <v-btn icon>
           <v-icon>mdi-heart-outline</v-icon>
@@ -82,7 +82,7 @@ export default {
     height: undefined,
     images: {
       // eslint-disable-next-line global-require
-      profile: require('@/assets/I.jpeg'),
+      profile: require('@/assets/group.jpg'),
       // eslint-disable-next-line comma-dangle
     }
   }),
