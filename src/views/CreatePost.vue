@@ -24,14 +24,43 @@
       </v-layout>
     </v-card>
     <v-row justify="center">
-      <v-dialog v-model="dialog" persistent max-width="500">
-        <v-card>
-
-          <v-card-actions>
+      <v-dialog v-model="dialog" max-width="700">
+        <v-card class="dcard">
+          <v-layout row>
+            <v-avatar class="mt-3 ml-10 mb-3" size="40">
+              <v-img :src="images.profile"></v-img>
+            </v-avatar>
+            <v-card-title class="text" style="font-weight:bold;">Kyi Sin Thant</v-card-title>
             <div class="flex-grow-1"></div>
-            <v-btn color="primary" text @click="dialog = false">Cancel</v-btn>
-            <v-btn color="primary" text @click="dialog = false">Post</v-btn>
-          </v-card-actions>
+            <v-card-actions>
+              <v-btn color="primary" class="mr-5" text @click="dialog = false">Post</v-btn>
+            </v-card-actions>
+          </v-layout>
+          <v-textarea
+            class="ml-6 mr-6"
+            v-model="model"
+            :auto-grow="autoGrow"
+            :clearable="clearable"
+            :outlined="outlined"
+            :persistent-hint="persistentHint"
+            :placeholder="placeholder"
+            :rounded="rounded"
+            :rows="rows"
+            :solo="solo"
+          ></v-textarea>
+          <v-layout row>
+            <v-card-text class="option">Add to your post</v-card-text>
+            <div class="flex-grow-1"></div>
+            <v-btn icon class="tag" >
+              <v-icon size="30">mdi-map-marker-outline</v-icon>
+            </v-btn>
+            <v-btn icon class="tag">
+              <v-icon>mdi-tag-outline</v-icon>
+            </v-btn>
+            <v-btn icon class="mr-6 btn">
+              <v-icon>mdi-image-filter</v-icon>
+            </v-btn>
+          </v-layout>
         </v-card>
       </v-dialog>
     </v-row>
@@ -40,13 +69,19 @@
 <script>
 export default {
   data: () => ({
+    autoGrow: false,
+    autofocus: true,
+    clearable: true,
+    placeholder: "What's on your mind?",
+    outlined: true,
+    rounded: true,
+    solo: true,
     dialog: false,
     elevation: 4,
     flat: false,
     media: true,
     loading: false,
     actions: true,
-    outlined: false,
     raised: true,
     width: 500,
     height: 70,
@@ -65,8 +100,22 @@ export default {
 };
 </script>
 <style scoped>
+.btn {
+  margin-top: -2.6rem;
+}
+.option {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+.dcard {
+  overflow: hidden;
+}
 .text {
   color: gray;
   font-size: 1rem;
+}
+.tag {
+  margin-top: -2.6rem;
 }
 </style>
