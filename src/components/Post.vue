@@ -8,6 +8,7 @@
       :raised="raised"
       :width="width"
       :height="height"
+      :elevation="elevation"
     >
       <v-layout row>
         <v-avatar class="mt-3 ml-5 mb-3" size="48">
@@ -92,6 +93,7 @@
 <script>
 export default {
   data: () => ({
+    elevation: 4,
     comment: null,
     flat: false,
     media: true,
