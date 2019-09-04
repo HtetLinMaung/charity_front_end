@@ -14,7 +14,7 @@
       <Messages />
     </v-layout>
     <v-layout>
-      <Sidebar />
+      <!-- <Sidebar /> -->
     </v-layout>
   </v-container>
 </template>
