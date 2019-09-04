@@ -11,18 +11,18 @@
   <v-spacer v-if="!$vuetify.breakpoint.xs"></v-spacer>
 
 
-  <v-btn icon @click="redirect('/')">
-    <v-icon>mdi-home-outline</v-icon>
+  <v-btn icon @click="focusIcon('/')">
+    <v-icon :color="currentPage == '/' ? 'primary': ''">mdi-home-outline</v-icon>
   </v-btn>
-  <v-btn icon @click="redirect('/profile')">
-    <v-icon>mdi-account-outline</v-icon>
+  <v-btn icon @click="focusIcon('/profile')">
+    <v-icon :color="currentPage == '/profile' ? 'primary': ''">mdi-account-outline</v-icon>
   </v-btn>
-  <v-btn icon>
-    <v-icon>mdi-heart-outline</v-icon>
+  <v-btn icon @click="focusIcon('/activity')">
+    <v-icon :color="currentPage == '/activity' ? 'primary': ''">mdi-heart-outline</v-icon>
   </v-btn>
 
-  <v-btn icon>
-    <v-icon>mdi-telegram</v-icon>
+  <v-btn icon @click="focusIcon('/messages')">
+    <v-icon :color="currentPage == '/messages' ? 'primary': ''">mdi-telegram</v-icon>
   </v-btn>
 
 
@@ -36,6 +36,15 @@ import {
 
 export default {
   mixins: [utils],
+  data: () => ({
+    currentPage: '/'
+  }),
+  methods: {
+    focusIcon(path) {
+      this.currentPage = path;
+      this.redirect(path);
+    }
+  }
 };
 </script>
 
