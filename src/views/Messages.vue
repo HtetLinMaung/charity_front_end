@@ -5,7 +5,7 @@
       <v-col class="message_card" align="end" justify="end">
         <v-card max-width="344" class="ml-auto mt-auto">
           <v-card-title>
-            <v-icon>mdi-message</v-icon>&nbsp;I'm a ChatBox
+            <v-icon>mdi-message</v-icon>&nbsp;Chat Mal
           </v-card-title>
           <v-card-text>
               <p :class="{ received: isReceived }"><span>hola</span></p>
@@ -21,7 +21,7 @@
               <p :class="{ received: isReceived }"><span>text1</span></p>
               <p :class="{ received: isReceived }"><span>text1</span></p>
           </v-card-text>
-          <v-text-field filled append-icon="mdi-emoticon-poop" label="message pote yan"></v-text-field>
+          <v-text-field filled append-icon="mdi-emoticon-poop" label="message pote mal"></v-text-field>
         </v-card>
       </v-col>
     </v-layout>
