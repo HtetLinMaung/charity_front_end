@@ -58,6 +58,7 @@
         solo
         class="custom"
         v-model="comment"
+        prepend-inner-icon="mdi-camera-outline"
         clear-icon="mdi-close-circle"
         clearable
         append-outer-icon="mdi-send "
