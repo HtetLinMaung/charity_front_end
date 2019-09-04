@@ -87,22 +87,6 @@
         placeholder="Add a comment..."
       ></v-text-field>
     </v-card>
-
-    <!-- <v-dialog v-model="optionbox" max-width="290">
-      <v-card class="mx-auto" max-width="300" tile>
-        <v-list rounded>
-          <v-list-item-group color="primary">
-            <v-list-item>Hide Post</v-list-item>
-            <v-divider></v-divider>
-            <v-list-item>Delete Post</v-list-item>
-            <v-divider></v-divider>
-            <v-list-item>Edit Post</v-list-item>
-            <v-divider></v-divider>
-            <v-list-item>Privacy</v-list-item>
-          </v-list-item-group>
-        </v-list>
-      </v-card>
-    </v-dialog>-->
   </div>
 </template>
 <script>
