@@ -1,6 +1,6 @@
 <template>
   <div class="messages">
-    
+
     <v-layout row>
       <v-col class="message_card" align="end" justify="end">
         <v-card max-width="344" class="ml-auto mt-auto">
@@ -337,7 +337,7 @@
 export default {
   data: () => ({
     isSend: true,
-  })
+  }),
 };
 </script>
 <style>

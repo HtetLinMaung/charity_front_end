@@ -3,9 +3,11 @@ export const utils = {
   methods: {
     redirect(pattern, option = 'path') {
       if (option == 'path') this.$router.push(pattern);
-      else if (option == 'name') this.$router.push({
-        name: pattern,
-      });
+      else if (option == 'name') {
+        this.$router.push({
+          name: pattern,
+        });
+      }
     },
   },
 };

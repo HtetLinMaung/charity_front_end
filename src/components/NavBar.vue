@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import { utils } from "../mixins/functions";
+import { utils } from '../mixins/functions';
 
 export default {
-  mixins: [utils]
+  mixins: [utils],
 };
 </script>
 
