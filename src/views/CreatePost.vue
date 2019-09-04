@@ -24,20 +24,20 @@
       </v-layout>
     </v-card>
     <v-row justify="center">
-      <v-dialog v-model="dialog" max-width="550">
+      <v-dialog v-model="dialog" max-width="500">
         <v-card class="dcard">
           <v-layout row>
-            <v-avatar class="mt-3 ml-10 mb-3" size="40">
+            <v-avatar class="mt-3 ml-5 mb-3" size="40">
               <v-img :src="images.profile"></v-img>
             </v-avatar>
-            <v-card-title class="text" style="font-weight:bold;">Kyi Sin Thant</v-card-title>
+            <v-card-title class="text mb-2" style="font-weight:bold;">Kyi Sin Thant</v-card-title>
             <div class="flex-grow-1"></div>
             <v-card-actions>
-              <v-btn color="primary" class="mr-5" text @click="dialog = false">Post</v-btn>
+              <v-btn color="primary" class="mr-3" text @click="dialog = false">Post</v-btn>
             </v-card-actions>
           </v-layout>
           <v-textarea
-            class="ml-6 mr-6"
+            class="ml-3 mr-3"
             v-model="model"
             :auto-grow="autoGrow"
             :clearable="clearable"
@@ -51,13 +51,13 @@
           <v-layout row>
             <v-card-text class="option">Add to your post</v-card-text>
             <div class="flex-grow-1"></div>
-            <v-btn icon class="tag" >
+            <v-btn icon class="tag">
               <v-icon size="30">mdi-map-marker-outline</v-icon>
             </v-btn>
             <v-btn icon class="tag">
               <v-icon>mdi-tag-outline</v-icon>
             </v-btn>
-            <v-btn icon class="mr-6 btn">
+            <v-btn icon class="mr-6 btn" >
               <v-icon>mdi-image-filter</v-icon>
             </v-btn>
           </v-layout>
@@ -87,7 +87,7 @@ export default {
     height: 70,
     images: {
       // eslint-disable-next-line global-require
-      profile: require('@/assets/group.jpg'),
+      profile: require("@/assets/group.jpg")
       // eslint-disable-next-line comma-dangle
     }
   }),
@@ -96,7 +96,9 @@ export default {
       const self = this;
       self.dialog = true;
     },
-  },
+
+  
+  }
 };
 </script>
 <style scoped>
@@ -106,11 +108,12 @@ export default {
 .option {
   font-size: 1rem;
   font-weight: bold;
-  margin-left: 1rem;
+  margin-left: 0.6rem;
+  color:gray;
 }
 .dcard {
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .text {
   color: gray;
@@ -119,7 +122,7 @@ export default {
 .tag {
   margin-top: -2.6rem;
 }
-.card{
+.card {
   border-radius: 10px;
 }
 </style>
