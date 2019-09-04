@@ -39,13 +39,12 @@ export default {
 <style>
 .card_message {
   position: fixed;
-  /* padding: 25% 15% 0 78%;
-  padding: 20% 0% 0 40%; */
   bottom: 0;
 }
 .card_message .v-card {
   min-width: 330px;
   margin-right: 30rem;
+  border-radius: 18px 18px 0px 0px ;
 }
 .card_message .v-card__title {
   background-color: rgb(226, 219, 219);
