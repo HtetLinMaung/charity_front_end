@@ -74,30 +74,43 @@
         class="grey--text adjust"
         style="font-size:12px;margin-bottom:-1rem;"
       >View all comments</v-card-text>
+
       <v-layout row>
-      <v-btn icon class="ml-5 mt-2" v-model="file" @click="browseimage">
-        <v-icon>mdi-camera-outline</v-icon>
-      </v-btn>
-      <v-text-field
-        flat
-        solo
-        class="custom mr-5"
-        v-model="comment"
-        clear-icon="mdi-close-circle"
-        clearable
-        append-outer-icon="mdi-send "
-        @click:append-outer="sendMessage"
-        placeholder="Add a comment..."
-      ></v-text-field>
+        <v-btn icon class="ml-5 mt-2" @click="pickFile">
+          <v-icon>mdi-camera-outline</v-icon>
+        </v-btn>
+        <input
+          type="file"
+          style="display: none"
+          ref="image"
+          accept="image/*"
+          @change="onFilePicked"
+        />
+        <v-text-field
+          flat
+          solo
+          class="custom mr-5"
+          v-model="comment"
+          clear-icon="mdi-close-circle"
+          clearable
+          append-outer-icon="mdi-send "
+          @click:append-outer="sendMessage"
+          placeholder="Add a comment..."
+        ></v-text-field>
       </v-layout>
-      <v-file-input multiple v-if="this.file==true"></v-file-input>
+      <img :src="imageUrl" height="150" v-if="imageUrl" />
     </v-card>
   </div>
 </template>
 <script>
 export default {
   data: () => ({
-    file: false,
+    commentimage: null,
+    hasImage: false,
+    image: null,
+    imageName: '',
+    imageUrl: '',
+    imageFile: '',
     elevation: 4,
     comment: null,
     flat: false,
@@ -117,14 +130,35 @@ export default {
   methods: {
     sendMessage() {
       this.clearMessage();
-      this.file = false;
+      this.imageUrl = '';
     },
     clearMessage() {
       this.comment = '';
     },
-    browseimage() {
-      const self = this;
-      self.file = true;
+    pickFile() {
+      this.$refs.image.click();
+    },
+
+    onFilePicked(e) {
+      const { files } = e.target;
+      if (files[0] !== undefined) {
+        this.imageName = files[0].name;
+        if (this.imageName.lastIndexOf('.') <= 0) {
+          return;
+        }
+        const fr = new FileReader();
+        fr.readAsDataURL(files[0]);
+        fr.addEventListener('load', () => {
+          this.imageUrl = fr.result;
+          this.imageFile = files[0]; // this is an image file that can be sent to server...
+        });
+      } else {
+        this.imageName = '';
+        this.imageFile = '';
+        this.imageUrl = '';
+      }
+
+
     },
   },
 };
@@ -146,6 +180,28 @@ export default {
 .adjust {
   padding-top: 0% !important;
   margin-top: -0.5rem;
+}
+#fileInput {
+  display: none;
+}
+h1,
+h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+.my-8 {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 </style>
 <style>
