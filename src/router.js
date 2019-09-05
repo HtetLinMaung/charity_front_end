@@ -4,11 +4,7 @@ import Home from './views/Home.vue';
 
 
 Vue.use(Router);
-
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [{
+let routes = [{
     path: '/',
     name: 'home',
     component: Home,
@@ -33,5 +29,18 @@ export default new Router({
     name: 'login',
     component: () => import('@/views/Login.vue'),
   },
-  ],
+];
+
+const router = new Router({
+  base: process.env.BASE_URL,
+  mode: "history",
+  linkActiveClass: "active",
+  routes
 });
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token');
+  if (!token && to.path != "/login") next("/login");
+  else next();
+});
+
+export default router;

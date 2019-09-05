@@ -1,16 +1,55 @@
 <template>
-<div>
+<div class="flex-container">
   <span class="dot1"></span>
   <span class="dot2"></span>
   <span class="dot3"></span>
   <span class="dot4"></span>
   <span class="dot5"></span>
   <span class="dot6"></span>
+  <h2 class="app-title">Login</h2>
+  <div class="highlight"></div>
+  <div style="width: 400px!important;" class="mt-5">
+    <v-text-field label="Username or Email" filled shaped clearable v-model="username"></v-text-field>
+  </div>
+  <div style="width: 400px!important;" class="mt-5 mb-3">
+    <v-text-field label="Password" v-model="password" :append-icon="show1 ? 'mdi-eye-outline' : 'mdi-eye-off-outline'" :rules="[rules.required, rules.min]" hint="At least 8 characters" counter @click:append="show1 = !show1"
+      :type="show1 ? 'text' : 'password'" filled shaped></v-text-field>
+  </div>
+  <div class="text-center mt-5">
+    <v-btn @click="login" class="gradient-btn" dark style="padding: 0 8rem;">Continue</v-btn>
+  </div>
 </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    username: 'Developer',
+    show1: false,
+    password: '12345678',
+    rules: {
+      required: value => !!value || 'Required.',
+      min: v => v.length >= 8 || 'Min 8 characters',
+      emailMatch: () => ('The email and password you entered don\'t match'),
+    },
+  }),
+  methods: {
+    login() {
+      const {username, password} = this;
+      if (username == 'Developer') {
+        if (password == '12345678') {
+          localStorage.setItem('token', 'authenticated');
+          this.$router.push('/');
+        } else {
+          alert('Incorrect Password');
+        }
+      } else {
+        alert('Incorrect Username');
+      }
+
+    }
+  }
+};
 </script>
 
 <style lang="scss">
@@ -91,5 +130,26 @@ export default {};
     position: fixed;
     top: -10%;
     left: -10%;
+}
+.app-title {
+    text-align: center;
+    color: #5f537d;
+    font-size: 51px;
+}
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.highlight {
+    background-image: linear-gradient(to right,#FFBA42,#e373c5);
+    height: 5px;
+    width: 140px;
+    margin-bottom: 2rem;
+}
+.gradient-btn {
+    background-image: linear-gradient(to bottom right,#FF6EAA 20%,#8989FF);
 }
 </style>
