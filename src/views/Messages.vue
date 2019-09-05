@@ -23,7 +23,7 @@
           <v-text-field v-show="show_message_toggle" filled append-icon="mdi-emoticon-poop" label="message pote mal"></v-text-field>
         </v-card>
       </v-col>
-  
+
 
   </div>
 </template>
@@ -40,6 +40,8 @@ export default {
 .card_message {
   position: fixed;
   bottom: 0;
+  right: 0;
+  width: auto;
 }
 .card_message .v-card {
   min-width: 330px;
@@ -68,7 +70,7 @@ export default {
 }
 .card_message .received span{
   text-align: right;
- background-color: darkgray; 
+ background-color: darkgray;
  padding: 7px 20px;
  border-radius: 10px 1px;
 }
@@ -76,7 +78,7 @@ export default {
   text-align: left;
 }
 .card_message span{
- background-color: aquamarine; 
+ background-color: aquamarine;
  padding: 7px 20px;
  border-radius: 10px 1px;
 }
