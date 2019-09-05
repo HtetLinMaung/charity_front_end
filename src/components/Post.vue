@@ -111,7 +111,7 @@ export default {
   }),
   methods: {
     sendMessage() {
-      this.resetIcon();
+
       this.clearMessage();
     },
     clearMessage() {
