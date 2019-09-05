@@ -9,11 +9,11 @@
   <h2 class="app-title">Login</h2>
   <div class="highlight"></div>
   <div style="width: 400px!important;" class="mt-5">
-    <v-text-field label="Username or Email" filled shaped clearable v-model="username"></v-text-field>
+    <v-text-field label="Username or Email" single-line outlined shaped clearable v-model="username"></v-text-field>
   </div>
   <div style="width: 400px!important;" class="mt-5 mb-3">
-    <v-text-field label="Password" v-model="password" :append-icon="show1 ? 'mdi-eye-outline' : 'mdi-eye-off-outline'" :rules="[rules.required, rules.min]" hint="At least 8 characters" counter @click:append="show1 = !show1"
-      :type="show1 ? 'text' : 'password'" filled shaped></v-text-field>
+    <v-text-field label="Password" single-line v-model="password" :append-icon="show1 ? 'mdi-eye-outline' : 'mdi-eye-off-outline'" :rules="[rules.required, rules.min]" hint="At least 8 characters" counter @click:append="show1 = !show1"
+      :type="show1 ? 'text' : 'password'" outlined shaped></v-text-field>
   </div>
   <div class="text-center mt-5">
     <v-btn @click="login" class="gradient-btn" dark style="padding: 0 8rem;">Continue</v-btn>
