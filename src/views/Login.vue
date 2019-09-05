@@ -16,7 +16,7 @@
       :type="show1 ? 'text' : 'password'" outlined shaped></v-text-field>
   </div>
   <div class="text-center mt-5">
-    <v-btn @click="login" class="gradient-btn r-p" dark >Continue</v-btn>
+    <v-btn @click="login" class="gradient-btn" dark>Continue</v-btn>
   </div>
 </div>
 </template>
@@ -59,24 +59,18 @@ export default {
 .r-width {
     width: 400px;
 }
-.r-p {
-  padding: 0 8rem;
-}
+
 @media all and (max-width: 375px) {
     .r-width {
         width: 320px!important;
     }
-    .r-p {
-      padding: 0 5rem!important;
-    }
+
 }
 @media all and (max-width: 320px) {
     .r-width {
         width: 300px!important;
     }
-    .r-p {
-      padding: 0 5rem!important;
-    }
+
 }
 .dot1 {
     height: 350px;

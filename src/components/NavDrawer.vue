@@ -35,6 +35,7 @@ export default {
     listAction(item) {
       if (item.title.match(/logout/i)) {
         localStorage.setItem('token', '');
+        this.$store.dispatch('setDrawer', false);
         this.$router.push('/login');
       }
     }
