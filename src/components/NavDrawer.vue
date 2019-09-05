@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer app>
+  <v-navigation-drawer app v-model="$store.state.drawer">
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="title">Hluu Kya Mal</v-list-item-title>
@@ -29,7 +29,7 @@ export default {
     items: [{
       icon: 'mdi-logout',
       title: "Logout"
-    }]
+    }],
   }),
   methods: {
     listAction(item) {

@@ -8,15 +8,15 @@
   <span class="dot6"></span>
   <h2 class="app-title">Login</h2>
   <div class="highlight"></div>
-  <div style="width: 400px!important;" class="mt-5">
+  <div class="mt-5 r-width">
     <v-text-field label="Username or Email" single-line outlined shaped clearable v-model="username"></v-text-field>
   </div>
-  <div style="width: 400px!important;" class="mt-5 mb-3">
+  <div class="mt-5 mb-3 r-width">
     <v-text-field label="Password" single-line v-model="password" :append-icon="show1 ? 'mdi-eye-outline' : 'mdi-eye-off-outline'" :rules="[rules.required, rules.min]" hint="At least 8 characters" counter @click:append="show1 = !show1"
       :type="show1 ? 'text' : 'password'" outlined shaped></v-text-field>
   </div>
   <div class="text-center mt-5">
-    <v-btn @click="login" class="gradient-btn" dark style="padding: 0 8rem;">Continue</v-btn>
+    <v-btn @click="login" class="gradient-btn r-p" dark >Continue</v-btn>
   </div>
 </div>
 </template>
@@ -35,7 +35,10 @@ export default {
   }),
   methods: {
     login() {
-      const {username, password} = this;
+      const {
+        username,
+        password
+      } = this;
       if (username == 'Developer') {
         if (password == '12345678') {
           localStorage.setItem('token', 'authenticated');
@@ -53,6 +56,28 @@ export default {
 </script>
 
 <style lang="scss">
+.r-width {
+    width: 400px;
+}
+.r-p {
+  padding: 0 8rem;
+}
+@media all and (max-width: 375px) {
+    .r-width {
+        width: 320px!important;
+    }
+    .r-p {
+      padding: 0 5rem!important;
+    }
+}
+@media all and (max-width: 320px) {
+    .r-width {
+        width: 300px!important;
+    }
+    .r-p {
+      padding: 0 5rem!important;
+    }
+}
 .dot1 {
     height: 350px;
     width: 350px;
@@ -135,6 +160,7 @@ export default {
     text-align: center;
     color: #5f537d;
     font-size: 51px;
+    z-index: 4;
 }
 .flex-container {
     display: flex;
@@ -148,6 +174,7 @@ export default {
     height: 5px;
     width: 140px;
     margin-bottom: 2rem;
+    z-index: 4;
 }
 .gradient-btn {
     background-image: linear-gradient(to bottom right,#FF6EAA 20%,#8989FF);

@@ -2,7 +2,7 @@
 <v-app-bar app color dense class="social-toolbar">
   <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
-  <v-btn icon v-if="$vuetify.breakpoint.xs">
+  <v-btn icon @click="$store.dispatch('onOff')">
     <v-icon>mdi-view-headline</v-icon>
   </v-btn>
 
@@ -37,14 +37,14 @@ import {
 export default {
   mixins: [utils],
   data: () => ({
-    currentPage: '/'
+    currentPage: '/',
   }),
   methods: {
     focusIcon(path) {
       this.currentPage = path;
       this.redirect(path);
     }
-  }
+  },
 };
 </script>
 
