@@ -74,25 +74,30 @@
         class="grey--text adjust"
         style="font-size:12px;margin-bottom:-1rem;"
       >View all comments</v-card-text>
-
+      <v-layout row>
+      <v-btn icon class="ml-5 mt-2" v-model="file" @click="browseimage">
+        <v-icon>mdi-camera-outline</v-icon>
+      </v-btn>
       <v-text-field
         flat
         solo
-        class="custom"
+        class="custom mr-5"
         v-model="comment"
-        prepend-inner-icon="mdi-camera-outline"
         clear-icon="mdi-close-circle"
         clearable
         append-outer-icon="mdi-send "
         @click:append-outer="sendMessage"
         placeholder="Add a comment..."
       ></v-text-field>
+      </v-layout>
+      <v-file-input multiple v-if="this.file==true"></v-file-input>
     </v-card>
   </div>
 </template>
 <script>
 export default {
   data: () => ({
+    file: false,
     elevation: 4,
     comment: null,
     flat: false,
@@ -112,9 +117,14 @@ export default {
   methods: {
     sendMessage() {
       this.clearMessage();
+      this.file = false;
     },
     clearMessage() {
       this.comment = '';
+    },
+    browseimage() {
+      const self = this;
+      self.file = true;
     },
   },
 };
