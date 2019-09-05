@@ -1,6 +1,6 @@
 <template>
 
-  <v-col class="card_message" align="end" justify="end">
+  <v-col v-show="false" class="card_message" align="end" justify="end">
     <v-card max-width="344" class="ml-auto mt-auto">
       <v-card-title @click="show_message_toggle = !show_message_toggle">
         <v-icon>mdi-message</v-icon>&nbsp;<b>Chat Mal </b><i>(Wai Yan)</i>
@@ -42,6 +42,7 @@ export default {
   bottom: 0;
   right: 0;
   width: auto;
+  padding: 0px;
 }
 .card_message .v-card {
   min-width: 330px;

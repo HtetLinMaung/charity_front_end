@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <v-layout row wrap>
+    <v-layout v-if="!$vuetify.breakpoint.xs" row wrap>
       <v-col class="card_sidebar md-1" justify="end">
         <v-card max-width="300" tile>
           <v-list
