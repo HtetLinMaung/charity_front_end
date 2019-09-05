@@ -98,7 +98,7 @@
           placeholder="Add a comment..."
         ></v-text-field>
       </v-layout>
-      <img :src="imageUrl" height="150" v-if="imageUrl" />
+      <img :src="imageUrl" height="100" width="120" v-if="imageUrl" class="ml-5" />
     </v-card>
   </div>
 </template>
