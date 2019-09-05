@@ -111,7 +111,6 @@ export default {
   }),
   methods: {
     sendMessage() {
-
       this.clearMessage();
     },
     clearMessage() {
