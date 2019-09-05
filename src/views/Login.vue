@@ -15,7 +15,7 @@
     <v-text-field label="Password" single-line v-model="password" :append-icon="show1 ? 'mdi-eye-outline' : 'mdi-eye-off-outline'" :rules="[rules.required, rules.min]" hint="At least 8 characters" counter @click:append="show1 = !show1"
       :type="show1 ? 'text' : 'password'" outlined shaped></v-text-field>
   </div>
-  <div class="text-center mt-5">
+  <div class="text-center mt-5 mb-5">
     <v-btn @click="login" class="gradient-btn" dark>Continue</v-btn>
   </div>
 </div>
