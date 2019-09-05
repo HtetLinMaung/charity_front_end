@@ -2,15 +2,15 @@
   <v-navigation-drawer app>
     <v-list-item>
       <v-list-item-content>
-        <v-list-item-title class="title">Application</v-list-item-title>
-        <v-list-item-subtitle>subtext</v-list-item-subtitle>
+        <v-list-item-title class="title">Hluu Kya Mal</v-list-item-title>
+        <v-list-item-subtitle>Tan Kya Mal</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
 
     <v-divider></v-divider>
 
     <v-list dense nav>
-      <v-list-item v-for="item in items" :key="item.title" link>
+      <v-list-item @click="listAction(item)" v-for="item in items" :key="item.title" link>
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
@@ -24,7 +24,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    items: [{
+      icon: 'mdi-logout',
+      title: "Logout"
+    }]
+  }),
+  methods: {
+    listAction(item) {
+      if (item.title.match(/logout/i)) {
+        localStorage.setItem('token', '');
+        this.$router.push('/login');
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss">
