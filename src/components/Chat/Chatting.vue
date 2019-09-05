@@ -82,4 +82,5 @@ export default {
  padding: 7px 20px;
  border-radius: 10px 1px;
 }
+
 </style>
