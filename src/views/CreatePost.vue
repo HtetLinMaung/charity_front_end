@@ -42,10 +42,8 @@
             :auto-grow="autoGrow"
             :clearable="clearable"
             :outlined="outlined"
-            :persistent-hint="persistentHint"
             :placeholder="placeholder"
             :rounded="rounded"
-            :rows="rows"
             :solo="solo"
           ></v-textarea>
           <v-layout row>
@@ -69,6 +67,7 @@
 <script>
 export default {
   data: () => ({
+    model: null,
     autoGrow: false,
     autofocus: true,
     clearable: true,
@@ -87,7 +86,7 @@ export default {
     height: 70,
     images: {
       // eslint-disable-next-line global-require
-      profile: require("@/assets/group.jpg")
+      profile: require('@/assets/group.jpg'),
       // eslint-disable-next-line comma-dangle
     }
   }),
@@ -97,8 +96,8 @@ export default {
       self.dialog = true;
     },
 
-  
-  }
+
+  },
 };
 </script>
 <style scoped>

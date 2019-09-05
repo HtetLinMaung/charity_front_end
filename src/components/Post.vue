@@ -115,7 +115,7 @@ export default {
       this.clearMessage();
     },
     clearMessage() {
-      this.message = '';
+      this.comment = '';
     },
   },
 };
