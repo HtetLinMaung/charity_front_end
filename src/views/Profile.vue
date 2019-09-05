@@ -31,7 +31,16 @@
           <v-text>&nbsp;&nbsp;followings</v-text>
         </v-flex>
       </v-layout>
+      &nbsp;
 
+      <v-tabs fixed-tabs>
+        <v-tab ml-1>
+          <v-icon>mdi-image-filter</v-icon>POSTS
+        </v-tab>
+        <v-tab>
+          <v-icon>mdi-bookmark-outline</v-icon>SAVED
+        </v-tab>
+      </v-tabs>
     </v-card>
   </div>
 </template>
@@ -42,14 +51,13 @@ export default {
     images: {
       coverPhoto: require("@/assets/Cover.jpg"),
       profilePhoto: require("@/assets/group.jpg")
-    },
-    loading: false
+    }
   })
 };
 </script>
 
 <style scoped>
-.center{
+.center {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -68,5 +76,8 @@ export default {
   margin-right: -2rem;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
+}
+.v-tab{
+  margin-left: 0 !important;
 }
 </style>
