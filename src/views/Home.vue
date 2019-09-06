@@ -5,6 +5,7 @@
         <CreatePost />
       </v-flex>
     </v-layout>
+    <Sidebar />
     <v-layout>
       <v-flex xs12 sm5 md5 offset-xs0 offset-lg2>
         <Post />

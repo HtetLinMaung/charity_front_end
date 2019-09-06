@@ -1,10 +1,10 @@
 <template>
   <div class="sidebar">
     <v-layout v-if="!$vuetify.breakpoint.xs" row wrap>
-      <v-col class="card_sidebar md-1" justify="end">
-        <v-card max-width="300" tile>
+      <v-col class="card_sidebar" justify="end">
+        <v-card max-width="300" title>
           <v-list
-            :two-line="two-line"
+            :two-line="twoLine"
             :shaped="shaped"
             :flat="flat"
             :inactive="inactive"
@@ -28,7 +28,7 @@
         <br>
         <v-card max-width="300" tile>
           <v-list
-            :two-line="two-line"
+            :two-line="twoLine"
             :shaped="shaped"
             :flat="flat"
             :inactive="inactive"
@@ -51,11 +51,32 @@
         </v-card>
       </v-col>
     </v-layout>
+
+
+    <v-layout class="hidden-sm-and-up" row wrap align-center>
+      <v-col class="card_sidebar_mobile">
+        <v-card
+        :flat="flat"
+        :outlined="outlined"
+        :raised="raised"
+        :elevation="elevation">
+          <v-layout>
+            <v-avatar class="ma-4" round v-for="(item, i) in items" :key="i">
+              <img :src="item.avatar" alt="John">
+            </v-avatar>
+          </v-layout>
+        </v-card>
+      </v-col>
+    </v-layout>
   </div>
 </template>
 
 <script>
+// import SidebarMobile from '../components/Sidebar/SidebarMobile.vue';
 export default {
+  // components: {
+  //   SidebarMobile,
+  // },
   data: () => ({
     item: 5,
     twoLine: true,
@@ -64,6 +85,10 @@ export default {
     inactive: true,
     nav: true,
     avatar: true,
+    flat: true,
+    outlined: true,
+    raised: true,
+    elevation: 4,
     items: [
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
@@ -107,11 +132,11 @@ export default {
   border-radius: 15px 15px 5px 5px ;
 }
 .card_sidebar .primary--text {
-    height: 270px;
-    overflow-y: scroll;
+  height: 270px;
+  overflow-y: scroll;
 }
 .card_sidebar ul{
-    list-style-type: none;
+  list-style-type: none;
 }
 .card_contacts_sidebar{
   position: fixed;
@@ -119,5 +144,23 @@ export default {
   margin-top: 70px;
   right: 0;
   width: auto;
+}
+.card_sidebar_mobile{
+  margin: 15px 0 0 0;
+  padding: 0;
+}
+.card_sidebar_mobile .v-avatar img{
+  border-radius: 100%;
+  width: 4rem;
+  height: 4rem;
+}
+.card_sidebar_mobile .layout{
+  height: 80px;
+}
+.card_sidebar_mobile .v-card{
+  margin: 0 10px;
+  height: 80px;
+  border-radius: 15px;
+  overflow-x: auto;
 }
 </style>
