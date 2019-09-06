@@ -32,15 +32,45 @@
         </v-flex>
       </v-layout>
       &nbsp;
+      <v-flex>
+        <v-tabs fixed-tabs>
+          <v-tab>
+            <v-icon>mdi-image-filter</v-icon>POSTS
+          </v-tab>
+          <v-tab>
+            <v-icon>mdi-bookmark-outline</v-icon>SAVED
+          </v-tab>
 
-      <v-tabs fixed-tabs>
-        <v-tab ml-1>
-          <v-icon>mdi-image-filter</v-icon>POSTS
-        </v-tab>
-        <v-tab>
-          <v-icon>mdi-bookmark-outline</v-icon>SAVED
-        </v-tab>
-      </v-tabs>
+          <v-tab-item>
+            <v-card flat>
+              <v-card-text style="margin:0px!important;">
+                <p>
+                  Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
+                </p>
+
+                <p>
+                  Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Aliquam lobortis. Aliquam lobortis. Suspendisse non nisl sit amet velit hendrerit rutrum.
+                </p>
+
+                <p class="mb-0">
+                  Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et, tincidunt eget, semper nec, quam. Phasellus blandit leo ut odio.
+                </p>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+
+          <v-tab-item>
+            <v-card flat>
+              <v-card-text>
+                <p>
+                  Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
+                </p>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+
+        </v-tabs>
+      </v-flex>
     </v-card>
   </div>
 </template>
@@ -77,7 +107,12 @@ export default {
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
 }
-.v-tab{
+.v-tab {
   margin-left: 0 !important;
 }
+.tabs {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
 </style>
