@@ -43,30 +43,30 @@
             :clearable="clearable"
             :outlined="outlined"
             :placeholder="placeholder"
-
             :solo="solo"
           ></v-textarea>
-          <v-layout>
-            <img
+          <v-layout style="margin-left:0.4rem;margin-right:0.4rem;">
+            <v-img
               :src="imageUrl"
               v-if="imageUrl"
-              class="ml-0 mb-3 mr-3"
-              :clearable="clearable"
+              class="ml-0 mb-3 mr-3 image"
               height="100%"
               width="100%"
+
             />
+
           </v-layout>
 
           <v-layout row>
             <v-card-text class="option">Add to your post</v-card-text>
             <div class="flex-grow-1"></div>
-            <v-btn icon class="tag">
-              <v-icon size="30">mdi-map-marker-outline</v-icon>
+            <v-btn icon class="tag" color="primary">
+              <v-icon size="30">mdi-map-marker</v-icon>
             </v-btn>
-            <v-btn icon class="tag">
-              <v-icon>mdi-tag-outline</v-icon>
+            <v-btn icon class="tag" color="primary">
+              <v-icon>mdi-tag</v-icon>
             </v-btn>
-            <v-btn icon class="mr-3 btn" @click="pickFile">
+            <v-btn icon class="mr-3 btn" @click="pickFile" color="primary">
               <v-icon>mdi-image-filter</v-icon>
             </v-btn>
             <input
@@ -75,7 +75,7 @@
               ref="image"
               accept="image/*"
               @change="onFilePicked"
-            />
+            >   </input>
           </v-layout>
         </v-card>
       </v-dialog>
@@ -170,5 +170,8 @@ export default {
 }
 .card {
   border-radius: 10px;
+}
+.image{
+  border-radius: 5px;
 }
 </style>
