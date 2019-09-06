@@ -18,7 +18,7 @@
         </v-avatar>
         <v-card-title class="text">What's on your mind?</v-card-title>
         <div class="flex-grow-1"></div>
-        <v-btn icon class="mt-5 mb-3 mr-3">
+        <v-btn icon class="mt-5 mb-3 mr-3" color="black">
           <v-icon>mdi-image-filter</v-icon>
         </v-btn>
       </v-layout>
