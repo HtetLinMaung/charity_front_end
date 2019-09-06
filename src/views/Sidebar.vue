@@ -25,7 +25,7 @@
             </v-list-item-group>
           </v-list>
         </v-card>
-        <br>
+        <br />
         <v-card max-width="300" tile>
           <v-list
             :two-line="twoLine"
@@ -52,17 +52,12 @@
       </v-col>
     </v-layout>
 
-
     <v-layout class="hidden-sm-and-up" row wrap align-center>
       <v-col class="card_sidebar_mobile">
-        <v-card
-        :flat="flat"
-        :outlined="outlined"
-        :raised="raised"
-        :elevation="elevation">
+        <v-card :flat="flat" :outlined="outlined" :raised="raised">
           <v-layout>
             <v-avatar class="ma-4" round v-for="(item, i) in items" :key="i">
-              <img :src="item.avatar" alt="John">
+              <img :class="{ selected: item.selected }" @click="selectedContact(i)" :src="item.avatar" alt="John" />
             </v-avatar>
           </v-layout>
         </v-card>
@@ -89,34 +84,52 @@ export default {
     outlined: true,
     raised: true,
     elevation: 4,
+    oldSelectedId: 0,
     items: [
       {
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-        title: 'Brunch this weekend?',
-        subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
+        avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+        title: "Brunch this weekend?",
+        subtitle:
+          "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
+        selected: false,
       },
       {
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
+        avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
         title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
-        subtitle: "<span class='text--primary'>to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.",
+        subtitle:
+          "<span class='text--primary'>to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.",
+        selected: false,
       },
       {
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-        title: 'Oui oui',
-        subtitle: "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?",
+        avatar: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
+        title: "Oui oui",
+        subtitle:
+          "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?",
+        selected: false,
       },
       {
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-        title: 'Birthday gift',
-        subtitle: "<span class='text--primary'>Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?",
+        avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
+        title: "Birthday gift",
+        subtitle:
+          "<span class='text--primary'>Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?",
+        selected: false,
       },
       {
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-        title: 'Recipe to try',
-        subtitle: "<span class='text--primary'>Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.",
-      },
-    ],
+        avatar: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
+        title: "Recipe to try",
+        subtitle:
+          "<span class='text--primary'>Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.",
+        selected: false,
+      }
+    ]
   }),
+  methods: {
+    selectedContact(id){
+      this.items[this.oldSelectedId].selected = false;
+      this.items[id].selected = true;
+      this.oldSelectedId = id
+    }
+  }
 };
 </script>
 <style>
@@ -127,37 +140,40 @@ export default {
   right: 0;
   width: auto;
 }
-.card_sidebar .v-card{
+.card_sidebar .v-card {
   margin-right: 5rem;
-  border-radius: 15px 15px 5px 5px ;
+  border-radius: 15px 15px 5px 5px;
 }
 .card_sidebar .primary--text {
   height: 270px;
   overflow-y: scroll;
 }
-.card_sidebar ul{
+.card_sidebar ul {
   list-style-type: none;
 }
-.card_contacts_sidebar{
+.card_contacts_sidebar {
   position: fixed;
   top: 0;
   margin-top: 70px;
   right: 0;
   width: auto;
 }
-.card_sidebar_mobile{
+.card_sidebar_mobile {
   margin: 15px 0 0 0;
   padding: 0;
 }
-.card_sidebar_mobile .v-avatar img{
+.card_sidebar_mobile .selected{
+  border: 4px solid #1DC8CD;
+}
+.card_sidebar_mobile .v-avatar img {
   border-radius: 100%;
   width: 4rem;
   height: 4rem;
 }
-.card_sidebar_mobile .layout{
+.card_sidebar_mobile .layout {
   height: 80px;
 }
-.card_sidebar_mobile .v-card{
+.card_sidebar_mobile .v-card {
   margin: 0 10px;
   height: 82px;
   border-radius: 15px;
