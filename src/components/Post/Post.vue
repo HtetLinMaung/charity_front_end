@@ -134,7 +134,7 @@ export default {
     height: undefined,
     images: {
       // eslint-disable-next-line global-require
-      profile: require('@/assets/group.jpg'),
+      profile: require('@/assets/lisa.jpg'),
       // eslint-disable-next-line comma-dangle
     }
   }),
