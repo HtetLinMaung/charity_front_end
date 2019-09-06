@@ -51,7 +51,7 @@
         <v-btn icon color="black">
           <v-icon>mdi-heart-outline</v-icon>
         </v-btn>
-        <v-btn icon color="black">
+        <v-btn icon color="black" @click="commentdialog">
           <v-icon>mdi-comment-processing-outline</v-icon>
         </v-btn>
         <v-btn icon color="black">
@@ -119,11 +119,49 @@
     <v-dialog max-width="500" v-model="imagedialog">
       <v-img class="image-wrapper" v-if="media" width="100%" height="100%" :src="images.profile"></v-img>
     </v-dialog>
+
+    <v-dialog v-model="dialogcomment" persistent max-width="600">
+      <v-card class="mx-auto" max-width="600" tile>
+        <v-list>
+          <v-layout row>
+            <v-btn color="primary" class="mr-0" text disabled style="font-weight:bold;">Comments</v-btn>
+            <div class="flex-grow-1"></div>
+            <v-btn color="primary" class="mr-0" text @click="dialogcomment = false">Cancel</v-btn>
+          </v-layout>
+          <v-divider></v-divider>
+          <v-list-item-group v-model="item" color="primary">
+            <v-list-item v-for="(item, i) in items" :key="i">
+              <v-list-item-icon>
+                <v-icon v-text="item.icon"></v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title v-text="item.text"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 <script>
 export default {
   data: () => ({
+    items: [
+      { text: 'I love lisa too <3', icon: 'mdi-account' },
+      { text: 'Lisa is amazing', icon: 'mdi-account' },
+      { text: 'Yay new song is so good', icon: 'mdi-account' },
+      { text: 'I love lisa too <3', icon: 'mdi-account' },
+      { text: 'I love lisa too <3', icon: 'mdi-account' },
+      { text: 'I love lisa too <3', icon: 'mdi-account' },
+      { text: 'I love lisa too <3', icon: 'mdi-account' },
+      { text: 'I love lisa too <3', icon: 'mdi-account' },
+      { text: 'I love lisa too <3', icon: 'mdi-account' },
+      { text: 'I love lisa too <3', icon: 'mdi-account' },
+      { text: 'I love lisa too <3', icon: 'mdi-account' },
+      { text: 'I love lisa too <3', icon: 'mdi-account' },
+    ],
+    dialogcomment: false,
     imagedialog: false,
     commentimage: null,
     hasImage: false,
@@ -184,6 +222,9 @@ export default {
     },
     postimage() {
       this.imagedialog = true;
+    },
+    commentdialog() {
+      this.dialogcomment = true;
     },
   },
 };
