@@ -21,7 +21,7 @@
 
 <script>
 // eslint-disable-next-line import/no-unresolved
-import Post from '../components/Post.vue';
+import Post from '../components/Post/Post.vue';
 import CreatePost from '@/views/CreatePost.vue';
 import Messages from '@/views/Messages.vue';
 import Sidebar from '@/views/Sidebar.vue';
