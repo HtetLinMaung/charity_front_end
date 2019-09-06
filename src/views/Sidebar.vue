@@ -159,7 +159,7 @@ export default {
 }
 .card_sidebar_mobile .v-card{
   margin: 0 10px;
-  height: 80px;
+  height: 82px;
   border-radius: 15px;
   overflow-x: auto;
 }
