@@ -120,7 +120,7 @@
       <v-img class="image-wrapper" v-if="media" width="100%" height="100%" :src="images.profile"></v-img>
     </v-dialog>
 
-    <v-dialog v-model="dialogcomment" persistent max-width="600">
+    <v-dialog v-model="dialogcomment" persistent max-width="600" >
       <v-card class="mx-auto" max-width="600" tile>
         <v-list>
           <v-layout row>
