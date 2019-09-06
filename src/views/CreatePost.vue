@@ -33,19 +33,30 @@
             <v-card-title class="text mb-2" style="font-weight:bold;">Kyi Sin Thant</v-card-title>
             <div class="flex-grow-1"></div>
             <v-card-actions>
-              <v-btn color="primary" class="mr-3" text @click="dialog = false">Post</v-btn>
+              <v-btn color="primary" class="mr-0" text @click="dialog = false">Post</v-btn>
             </v-card-actions>
           </v-layout>
           <v-textarea
-            class="ml-3 mr-3"
+            class="ml-2 mr-2"
             v-model="model"
             :auto-grow="autoGrow"
             :clearable="clearable"
             :outlined="outlined"
             :placeholder="placeholder"
-            :rounded="rounded"
+
             :solo="solo"
           ></v-textarea>
+          <v-layout>
+            <img
+              :src="imageUrl"
+              v-if="imageUrl"
+              class="ml-0 mb-3 mr-3"
+              :clearable="clearable"
+              height="100%"
+              width="100%"
+            />
+          </v-layout>
+
           <v-layout row>
             <v-card-text class="option">Add to your post</v-card-text>
             <div class="flex-grow-1"></div>
@@ -55,9 +66,16 @@
             <v-btn icon class="tag">
               <v-icon>mdi-tag-outline</v-icon>
             </v-btn>
-            <v-btn icon class="mr-6 btn" >
+            <v-btn icon class="mr-3 btn" @click="pickFile">
               <v-icon>mdi-image-filter</v-icon>
             </v-btn>
+            <input
+              type="file"
+              style="display: none"
+              ref="image"
+              accept="image/*"
+              @change="onFilePicked"
+            />
           </v-layout>
         </v-card>
       </v-dialog>
@@ -67,6 +85,10 @@
 <script>
 export default {
   data: () => ({
+    image: null,
+    imageName: '',
+    imageUrl: '',
+    imageFile: '',
     model: null,
     autoGrow: false,
     autofocus: true,
@@ -95,20 +117,45 @@ export default {
       const self = this;
       self.dialog = true;
     },
+    pickFile() {
+      this.$refs.image.click();
+    },
 
-
+    onFilePicked(e) {
+      const { files } = e.target;
+      if (files[0] !== undefined) {
+        this.imageName = files[0].name;
+        if (this.imageName.lastIndexOf('.') <= 0) {
+          return;
+        }
+        const fr = new FileReader();
+        fr.readAsDataURL(files[0]);
+        fr.addEventListener('load', () => {
+          this.imageUrl = fr.result;
+          // eslint-disable-next-line prefer-destructuring
+          this.imageFile = files[0]; // this is an image file that can be sent to server...
+        });
+      } else {
+        this.imageName = '';
+        this.imageFile = '';
+        this.imageUrl = '';
+      }
+    },
   },
 };
 </script>
 <style scoped>
+#fileInput {
+  display: none;
+}
 .btn {
   margin-top: -2.6rem;
 }
 .option {
   font-size: 1rem;
   font-weight: bold;
-  margin-left: 0.6rem;
-  color:gray;
+  margin-left: 0.2rem;
+  color: gray;
 }
 .dcard {
   overflow: hidden;

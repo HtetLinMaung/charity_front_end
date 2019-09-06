@@ -98,7 +98,10 @@
           placeholder="Add a comment..."
         ></v-text-field>
       </v-layout>
-      <img :src="imageUrl" height="100" width="120" v-if="imageUrl" class="ml-5" />
+      <v-layout>
+          <img :src="imageUrl" v-if="imageUrl" class="ml-10 mb-3" :clearable="clearable"  height="70%" width="30%" />
+
+      </v-layout>
     </v-card>
   </div>
 </template>
@@ -150,6 +153,7 @@ export default {
         fr.readAsDataURL(files[0]);
         fr.addEventListener('load', () => {
           this.imageUrl = fr.result;
+          // eslint-disable-next-line prefer-destructuring
           this.imageFile = files[0]; // this is an image file that can be sent to server...
         });
       } else {
@@ -157,8 +161,6 @@ export default {
         this.imageFile = '';
         this.imageUrl = '';
       }
-
-
     },
   },
 };
@@ -184,7 +186,6 @@ export default {
 #fileInput {
   display: none;
 }
-
 </style>
 <style>
 .custom .v-input__control .v-text-field__details {
