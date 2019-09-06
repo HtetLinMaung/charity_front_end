@@ -22,7 +22,7 @@
 
         <v-menu transition="scroll-x-reverse-transition" width="400">
           <template v-slot:activator="{ on }">
-            <v-btn icon class="mr-7 mt-5" v-on="on">
+            <v-btn icon class="mr-3 mt-5" v-on="on" color="black">
               <v-icon>mdi-dots-horizontal</v-icon>
             </v-btn>
           </template>
@@ -52,20 +52,20 @@
 
       <v-card-text style="font-weight:bold">Hello...........</v-card-text>
       <v-card-actions v-if="actions" class="adjust">
-        <v-btn icon class="dark">
+        <v-btn icon color="black">
           <v-icon>mdi-heart-outline</v-icon>
         </v-btn>
-        <v-btn icon>
+        <v-btn icon color="black">
           <v-icon>mdi-comment-processing-outline</v-icon>
         </v-btn>
-        <v-btn icon>
+        <v-btn icon color="black">
           <v-icon>mdi-tag-outline</v-icon>
         </v-btn>
         <div class="flex-grow-1"></div>
-        <v-btn icon>
+        <v-btn icon color="black">
           <v-icon>mdi-bookmark-outline</v-icon>
         </v-btn>
-        <v-btn icon>
+        <v-btn icon color="black">
           <v-icon>mdi-share-variant</v-icon>
         </v-btn>
       </v-card-actions>
@@ -76,7 +76,7 @@
       >View all comments</v-card-text>
 
       <v-layout row>
-        <v-btn icon class="ml-5 mt-2" @click="pickFile">
+        <v-btn icon class="ml-5 mt-2" @click="pickFile" color="black">
           <v-icon>mdi-camera-outline</v-icon>
         </v-btn>
         <input
