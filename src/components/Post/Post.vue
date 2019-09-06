@@ -14,12 +14,8 @@
         <v-avatar class="mt-3 ml-5 mb-3" size="48">
           <v-img :src="images.profile"></v-img>
         </v-avatar>
-        <v-card-title style="font-size:15px;font-weight:bold;">Kyi Sin Thant</v-card-title>
+        <v-card-title style="font-size:15px;font-weight:bold;margin-top:-0.5rem;">Kyi Sin Thant</v-card-title>
         <div class="flex-grow-1"></div>
-        <!-- <v-btn icon class="mr-7 mt-5" @click="option">
-          <v-icon>mdi-dots-horizontal</v-icon>
-        </v-btn>-->
-
         <v-menu transition="scroll-x-reverse-transition" width="400">
           <template v-slot:activator="{ on }">
             <v-btn icon class="mr-3 mt-5" v-on="on" color="black">
@@ -99,14 +95,8 @@
         ></v-text-field>
       </v-layout>
       <v-hover v-slot:default="{ hover }">
-        <v-layout  style="margin-right:1rem;margin-left:1rem;">
-          <v-img
-            :src="imageUrl"
-            v-if="imageUrl"
-            class=" mb-3 image"
-            :clearable="clearable"
-
-          >
+        <v-layout style="margin-right:1rem;margin-left:1rem;">
+          <v-img :src="imageUrl" v-if="imageUrl" class="mb-3 image" :clearable="clearable" max-width="159.53" max-height="159.53">
             <v-expand-transition>
               <div v-if="hover" class="d-flex v-card--reveal display-3" style="height: 100%;">
                 <div class="flex-grow-1"></div>
@@ -182,7 +172,7 @@ export default {
 };
 </script>
 <style scoped>
-.image{
+.image {
   border-radius: 5px;
 }
 .v-input__slider {
