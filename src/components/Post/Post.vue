@@ -137,6 +137,10 @@
               <v-list-item-content>
                 <v-list-item-title v-text="item.text"></v-list-item-title>
               </v-list-item-content>
+                <div class="flex-grow-1"></div>
+               <v-list-item-icon>
+                <v-icon v-text="item.likeicon"></v-icon>
+              </v-list-item-icon>
             </v-list-item>
           </v-list-item-group>
         </v-list>
@@ -148,18 +152,18 @@
 export default {
   data: () => ({
     items: [
-      { text: 'I love lisa too <3', icon: 'mdi-account' },
-      { text: 'Lisa is amazing', icon: 'mdi-account' },
-      { text: 'Yay new song is so good', icon: 'mdi-account' },
-      { text: 'I love lisa too <3', icon: 'mdi-account' },
-      { text: 'I love lisa too <3', icon: 'mdi-account' },
-      { text: 'I love lisa too <3', icon: 'mdi-account' },
-      { text: 'I love lisa too <3', icon: 'mdi-account' },
-      { text: 'I love lisa too <3', icon: 'mdi-account' },
-      { text: 'I love lisa too <3', icon: 'mdi-account' },
-      { text: 'I love lisa too <3', icon: 'mdi-account' },
-      { text: 'I love lisa too <3', icon: 'mdi-account' },
-      { text: 'I love lisa too <3', icon: 'mdi-account' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'Lisa is amazing', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'Yay new song is so good', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
     ],
     dialogcomment: false,
     imagedialog: false,
