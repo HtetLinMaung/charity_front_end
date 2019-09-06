@@ -102,7 +102,7 @@
             <v-expand-transition>
               <div v-if="hover" class="d-flex v-card--reveal display-3" style="height: 100%;">
                 <div class="flex-grow-1"></div>
-                <v-btn icon class="white">
+                <v-btn icon class="white" @click="removeimage" >
                   <v-icon>mdi-close</v-icon>
                 </v-btn>
               </div>
@@ -169,6 +169,9 @@ export default {
         this.imageFile = '';
         this.imageUrl = '';
       }
+    },
+    removeimage() {
+      this.imageUrl = '';
     },
   },
 };
