@@ -14,8 +14,8 @@
         <v-avatar class="mt-3 ml-5 mb-3" size="48">
           <v-img :src="images.profile"></v-img>
         </v-avatar>
-        <v-card-title style="font-size:15px;font-weight:bold;margin-top:-0.5rem;">Kyi Sin Thant
-        </v-card-title>
+        <v-card-title style="font-size:15px;font-weight:bold;margin-top:-0.5rem;">
+          Kyi Sin Thant</v-card-title>
         <div class="flex-grow-1"></div>
         <v-menu transition="scroll-x-reverse-transition" width="400">
           <template v-slot:activator="{ on }">
@@ -38,7 +38,6 @@
           </v-card>
         </v-menu>
       </v-layout>
-
       <v-img
         class="image-wrapper"
         v-if="media"
@@ -122,6 +121,7 @@
 <script>
 export default {
   data: () => ({
+
     commentimage: null,
     hasImage: false,
     image: null,
@@ -179,6 +179,7 @@ export default {
     removeimage() {
       this.imageUrl = '';
     },
+
   },
 };
 </script>
