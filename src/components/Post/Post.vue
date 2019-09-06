@@ -116,7 +116,7 @@
         ></v-text-field>
       </v-layout>
     </v-card>
-    <v-dialog max-width="290" v-model="imagedialog">
+    <v-dialog max-width="500" v-model="imagedialog">
       <v-img class="image-wrapper" v-if="media" width="100%" height="100%" :src="images.profile"></v-img>
     </v-dialog>
   </div>
