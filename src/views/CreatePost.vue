@@ -16,9 +16,9 @@
         <v-avatar class="mt-3 ml-5 mb-3" size="40">
           <v-img :src="images.profile"></v-img>
         </v-avatar>
-        <v-card-title class="text">What's on your mind?</v-card-title>
+        <v-card-title class="text mb-3" >What's on your mind?</v-card-title>
         <div class="flex-grow-1"></div>
-        <v-btn icon class="mt-5 mb-3 mr-3">
+        <v-btn icon class="mt-4 mb-4 mr-3" color="black">
           <v-icon>mdi-image-filter</v-icon>
         </v-btn>
       </v-layout>
@@ -43,30 +43,43 @@
             :clearable="clearable"
             :outlined="outlined"
             :placeholder="placeholder"
-
             :solo="solo"
           ></v-textarea>
-          <v-layout>
-            <img
-              :src="imageUrl"
-              v-if="imageUrl"
-              class="ml-0 mb-3 mr-3"
-              :clearable="clearable"
-              height="100%"
-              width="100%"
-            />
+          <v-layout style="margin-left:0.4rem;margin-right:0.4rem;">
+            <v-hover v-slot:default="{ hover }">
+              <v-img
+                :src="imageUrl"
+                v-if="imageUrl"
+                class="ml-0 mb-3 mr-3 image"
+                height="100%"
+                width="100%"
+              >
+                <v-expand-transition>
+                  <div
+                    v-if="hover"
+                    class="d-flex  v-card--reveal display-3 "
+                    style="height: 100%;"
+                  >
+                    <div class="flex-grow-1"></div>
+                    <v-btn icon class="white" @click="removeimage" >
+                      <v-icon >mdi-close</v-icon>
+                    </v-btn>
+                  </div>
+                </v-expand-transition>
+              </v-img>
+            </v-hover>
           </v-layout>
 
           <v-layout row>
             <v-card-text class="option">Add to your post</v-card-text>
             <div class="flex-grow-1"></div>
-            <v-btn icon class="tag">
-              <v-icon size="30">mdi-map-marker-outline</v-icon>
+            <v-btn icon class="tag" color="primary">
+              <v-icon size="30">mdi-map-marker</v-icon>
             </v-btn>
-            <v-btn icon class="tag">
-              <v-icon>mdi-tag-outline</v-icon>
+            <v-btn icon class="tag" color="primary">
+              <v-icon>mdi-tag</v-icon>
             </v-btn>
-            <v-btn icon class="mr-3 btn" @click="pickFile">
+            <v-btn icon class="mr-3 btn" @click="pickFile" color="primary">
               <v-icon>mdi-image-filter</v-icon>
             </v-btn>
             <input
@@ -75,6 +88,7 @@
               ref="image"
               accept="image/*"
               @change="onFilePicked"
+              append-icon="close"
             />
           </v-layout>
         </v-card>
@@ -98,17 +112,17 @@ export default {
     rounded: true,
     solo: true,
     dialog: false,
-    elevation: 4,
+    elevation: 3,
     flat: false,
     media: true,
     loading: false,
     actions: true,
     raised: true,
     width: 500,
-    height: 70,
+    height: 60,
     images: {
       // eslint-disable-next-line global-require
-      profile: require('@/assets/group.jpg'),
+      profile: require('@/assets/lisa.jpg'),
       // eslint-disable-next-line comma-dangle
     }
   }),
@@ -141,6 +155,9 @@ export default {
         this.imageUrl = '';
       }
     },
+    removeimage() {
+      this.imageUrl = '';
+    },
   },
 };
 </script>
@@ -170,5 +187,8 @@ export default {
 }
 .card {
   border-radius: 10px;
+}
+.image {
+  border-radius: 5px;
 }
 </style>

@@ -14,15 +14,11 @@
         <v-avatar class="mt-3 ml-5 mb-3" size="48">
           <v-img :src="images.profile"></v-img>
         </v-avatar>
-        <v-card-title style="font-size:15px;font-weight:bold;">Kyi Sin Thant</v-card-title>
+        <v-card-title style="font-size:15px;font-weight:bold;margin-top:-0.5rem;">Kyi Sin Thant</v-card-title>
         <div class="flex-grow-1"></div>
-        <!-- <v-btn icon class="mr-7 mt-5" @click="option">
-          <v-icon>mdi-dots-horizontal</v-icon>
-        </v-btn>-->
-
         <v-menu transition="scroll-x-reverse-transition" width="400">
           <template v-slot:activator="{ on }">
-            <v-btn icon class="mr-7 mt-5" v-on="on">
+            <v-btn icon class="mr-3 mt-5" v-on="on" color="black">
               <v-icon>mdi-dots-horizontal</v-icon>
             </v-btn>
           </template>
@@ -41,42 +37,62 @@
           </v-card>
         </v-menu>
       </v-layout>
-
       <v-img
         class="image-wrapper"
         v-if="media"
         max-height="550"
         :height="height"
         :src="images.profile"
+        @click="postimage"
       ></v-img>
 
       <v-card-text style="font-weight:bold">Hello...........</v-card-text>
       <v-card-actions v-if="actions" class="adjust">
-        <v-btn icon>
+        <v-btn icon color="black">
           <v-icon>mdi-heart-outline</v-icon>
         </v-btn>
-        <v-btn icon>
+        <v-btn icon color="black" @click="commentdialog">
           <v-icon>mdi-comment-processing-outline</v-icon>
         </v-btn>
-        <v-btn icon>
+        <v-btn icon color="black">
           <v-icon>mdi-tag-outline</v-icon>
         </v-btn>
         <div class="flex-grow-1"></div>
-        <v-btn icon>
+        <v-btn icon color="black">
           <v-icon>mdi-bookmark-outline</v-icon>
         </v-btn>
-        <v-btn icon>
+        <v-btn icon color="black">
           <v-icon>mdi-share-variant</v-icon>
         </v-btn>
       </v-card-actions>
       <v-card-text class="adjust">40,000 likes</v-card-text>
       <v-card-text
         class="grey--text adjust"
-        style="font-size:12px;margin-bottom:-1rem;"
+        style="font-size:12px;margin-bottom:-0.5rem;"
       >View all comments</v-card-text>
-
+      <v-hover v-slot:default="{ hover }">
+        <v-layout style="margin-left:1rem;">
+          <v-img
+            :src="imageUrl"
+            v-if="imageUrl"
+            class="mb-3 image"
+            :clearable="clearable"
+            max-width="159.53"
+            max-height="159.53"
+          >
+            <v-expand-transition>
+              <div v-if="hover" class="d-flex v-card--reveal display-3" style="height: 100%;">
+                <div class="flex-grow-1"></div>
+                <v-btn icon class="white" @click="removeimage">
+                  <v-icon>mdi-close</v-icon>
+                </v-btn>
+              </div>
+            </v-expand-transition>
+          </v-img>
+        </v-layout>
+      </v-hover>
       <v-layout row>
-        <v-btn icon class="ml-5 mt-2" @click="pickFile">
+        <v-btn icon class="ml-5 mt-2" @click="pickFile" color="black">
           <v-icon>mdi-camera-outline</v-icon>
         </v-btn>
         <input
@@ -86,6 +102,7 @@
           accept="image/*"
           @change="onFilePicked"
         />
+
         <v-text-field
           flat
           solo
@@ -98,16 +115,58 @@
           placeholder="Add a comment..."
         ></v-text-field>
       </v-layout>
-      <v-layout>
-          <img :src="imageUrl" v-if="imageUrl" class="ml-10 mb-3" :clearable="clearable"  height="70%" width="30%" />
-
-      </v-layout>
     </v-card>
+    <v-dialog max-width="500" v-model="imagedialog">
+      <v-img class="image-wrapper" v-if="media" width="100%" height="100%" :src="images.profile"></v-img>
+    </v-dialog>
+
+    <v-dialog v-model="dialogcomment" persistent max-width="600" >
+      <v-card class="mx-auto" max-width="600" tile>
+        <v-list>
+          <v-layout row>
+            <v-btn color="primary" class="mr-0" text disabled style="font-weight:bold;">Comments</v-btn>
+            <div class="flex-grow-1"></div>
+            <v-btn color="primary" class="mr-0" text @click="dialogcomment = false">Cancel</v-btn>
+          </v-layout>
+          <v-divider></v-divider>
+          <v-list-item-group v-model="item" color="primary">
+            <v-list-item v-for="(item, i) in items" :key="i">
+              <v-list-item-icon>
+                <v-icon v-text="item.icon"></v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title v-text="item.text"></v-list-item-title>
+              </v-list-item-content>
+                <div class="flex-grow-1"></div>
+               <v-list-item-icon>
+                <v-icon v-text="item.likeicon"></v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 <script>
 export default {
   data: () => ({
+    items: [
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'Lisa is amazing', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'Yay new song is so good', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' },
+    ],
+    dialogcomment: false,
+    imagedialog: false,
     commentimage: null,
     hasImage: false,
     image: null,
@@ -126,7 +185,7 @@ export default {
     height: undefined,
     images: {
       // eslint-disable-next-line global-require
-      profile: require('@/assets/group.jpg'),
+      profile: require('@/assets/lisa.jpg'),
       // eslint-disable-next-line comma-dangle
     }
   }),
@@ -162,10 +221,22 @@ export default {
         this.imageUrl = '';
       }
     },
+    removeimage() {
+      this.imageUrl = '';
+    },
+    postimage() {
+      this.imagedialog = true;
+    },
+    commentdialog() {
+      this.dialogcomment = true;
+    },
   },
 };
 </script>
 <style scoped>
+.image {
+  border-radius: 5px;
+}
 .v-input__slider {
   width: 100%;
 }

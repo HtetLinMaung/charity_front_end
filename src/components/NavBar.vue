@@ -6,22 +6,23 @@
     <v-icon>mdi-view-headline</v-icon>
   </v-btn>
 
-  <v-toolbar-title v-if="!$vuetify.breakpoint.xs" class="logo-text" @click="redirect('/')">Hluu Mal</v-toolbar-title>
+  <v-toolbar-title v-if="!$vuetify.breakpoint.xs" class="logo-text" @click="redirect('/')">
+  Hluu Mal</v-toolbar-title>
 
   <v-spacer v-if="!$vuetify.breakpoint.xs"></v-spacer>
 
 
-  <v-btn icon @click="focusIcon('/')">
+  <v-btn icon @click="focusIcon('/')" color="black">
     <v-icon :color="currentPage == '/' ? 'primary': ''">mdi-home-outline</v-icon>
   </v-btn>
-  <v-btn icon @click="focusIcon('/profile')">
+  <v-btn icon @click="focusIcon('/profile')" color="black">
     <v-icon :color="currentPage == '/profile' ? 'primary': ''">mdi-account-outline</v-icon>
   </v-btn>
-  <v-btn icon @click="focusIcon('/activity')">
+  <v-btn icon @click="focusIcon('/activity')" color="black">
     <v-icon :color="currentPage == '/activity' ? 'primary': ''">mdi-heart-outline</v-icon>
   </v-btn>
 
-  <v-btn icon @click="focusIcon('/messages')">
+  <v-btn icon @click="focusIcon('/messages')" color="black">
     <v-icon :color="currentPage == '/messages' ? 'primary': ''">mdi-telegram</v-icon>
   </v-btn>
 
@@ -31,7 +32,7 @@
 
 <script>
 import {
-  utils
+  utils,
 } from '../mixins/functions';
 
 export default {
@@ -43,7 +44,7 @@ export default {
     focusIcon(path) {
       this.currentPage = path;
       this.redirect(path);
-    }
+    },
   },
 };
 </script>
