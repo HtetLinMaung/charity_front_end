@@ -46,15 +46,28 @@
             :solo="solo"
           ></v-textarea>
           <v-layout style="margin-left:0.4rem;margin-right:0.4rem;">
-            <v-img
-              :src="imageUrl"
-              v-if="imageUrl"
-              class="ml-0 mb-3 mr-3 image"
-              height="100%"
-              width="100%"
-
-            />
-
+            <v-hover v-slot:default="{ hover }">
+              <v-img
+                :src="imageUrl"
+                v-if="imageUrl"
+                class="ml-0 mb-3 mr-3 image"
+                height="100%"
+                width="100%"
+              >
+                <v-expand-transition>
+                  <div
+                    v-if="hover"
+                    class="d-flex  v-card--reveal display-3 "
+                    style="height: 100%;"
+                  >
+                    <div class="flex-grow-1"></div>
+                    <v-btn icon class="white" >
+                      <v-icon >mdi-close</v-icon>
+                    </v-btn>
+                  </div>
+                </v-expand-transition>
+              </v-img>
+            </v-hover>
           </v-layout>
 
           <v-layout row>
@@ -75,7 +88,8 @@
               ref="image"
               accept="image/*"
               @change="onFilePicked"
-            >   </input>
+              append-icon="close"
+            />
           </v-layout>
         </v-card>
       </v-dialog>
@@ -171,7 +185,7 @@ export default {
 .card {
   border-radius: 10px;
 }
-.image{
+.image {
   border-radius: 5px;
 }
 </style>

@@ -52,7 +52,7 @@
 
       <v-card-text style="font-weight:bold">Hello...........</v-card-text>
       <v-card-actions v-if="actions" class="adjust">
-        <v-btn icon>
+        <v-btn icon class="dark">
           <v-icon>mdi-heart-outline</v-icon>
         </v-btn>
         <v-btn icon>
@@ -98,10 +98,26 @@
           placeholder="Add a comment..."
         ></v-text-field>
       </v-layout>
-      <v-layout>
-          <img :src="imageUrl" v-if="imageUrl" class="ml-10 mb-3" :clearable="clearable"  height="70%" width="30%" />
+      <v-hover v-slot:default="{ hover }">
+        <v-layout  style="margin-right:1rem;margin-left:1rem;">
+          <v-img
+            :src="imageUrl"
+            v-if="imageUrl"
+            class=" mb-3 image"
+            :clearable="clearable"
 
-      </v-layout>
+          >
+            <v-expand-transition>
+              <div v-if="hover" class="d-flex v-card--reveal display-3" style="height: 100%;">
+                <div class="flex-grow-1"></div>
+                <v-btn icon class="white">
+                  <v-icon>mdi-close</v-icon>
+                </v-btn>
+              </div>
+            </v-expand-transition>
+          </v-img>
+        </v-layout>
+      </v-hover>
     </v-card>
   </div>
 </template>
@@ -166,6 +182,9 @@ export default {
 };
 </script>
 <style scoped>
+.image{
+  border-radius: 5px;
+}
 .v-input__slider {
   width: 100%;
 }
