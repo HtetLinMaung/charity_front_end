@@ -112,14 +112,14 @@ export default {
     rounded: true,
     solo: true,
     dialog: false,
-    elevation: 4,
+    elevation: 3,
     flat: false,
     media: true,
     loading: false,
     actions: true,
     raised: true,
     width: 500,
-    height: 70,
+    height: 60,
     images: {
       // eslint-disable-next-line global-require
       profile: require('@/assets/lisa.jpg'),

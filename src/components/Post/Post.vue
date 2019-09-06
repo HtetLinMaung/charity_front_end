@@ -14,8 +14,7 @@
         <v-avatar class="mt-3 ml-5 mb-3" size="48">
           <v-img :src="images.profile"></v-img>
         </v-avatar>
-        <v-card-title style="font-size:15px;font-weight:bold;margin-top:-0.5rem;">
-          Kyi Sin Thant</v-card-title>
+        <v-card-title style="font-size:15px;font-weight:bold;margin-top:-0.5rem;">Kyi Sin Thant</v-card-title>
         <div class="flex-grow-1"></div>
         <v-menu transition="scroll-x-reverse-transition" width="400">
           <template v-slot:activator="{ on }">
@@ -44,6 +43,7 @@
         max-height="550"
         :height="height"
         :src="images.profile"
+        @click="postimage"
       ></v-img>
 
       <v-card-text style="font-weight:bold">Hello...........</v-card-text>
@@ -116,12 +116,15 @@
         ></v-text-field>
       </v-layout>
     </v-card>
+    <v-dialog max-width="290" v-model="imagedialog">
+      <v-img class="image-wrapper" v-if="media" width="100%" height="100%" :src="images.profile"></v-img>
+    </v-dialog>
   </div>
 </template>
 <script>
 export default {
   data: () => ({
-
+    imagedialog: false,
     commentimage: null,
     hasImage: false,
     image: null,
@@ -179,7 +182,9 @@ export default {
     removeimage() {
       this.imageUrl = '';
     },
-
+    postimage() {
+      this.imagedialog = true;
+    },
   },
 };
 </script>
