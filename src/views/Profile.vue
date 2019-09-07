@@ -107,6 +107,7 @@
                   </v-col>
                 </v-row>
               </v-container>
+            </v-card>
           </v-tab-item>
 
         </v-tabs>
