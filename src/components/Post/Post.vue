@@ -61,15 +61,23 @@
         <v-btn icon color="black">
           <v-icon>mdi-bookmark-outline</v-icon>
         </v-btn>
-        <v-btn icon color="black">
-          <v-icon>mdi-share-variant</v-icon>
-        </v-btn>
+        <v-menu transition="scroll-x-reverse-transition" width="400">
+          <template v-slot:activator="{ on }">
+            <v-btn icon color="black" v-on="on">
+              <v-icon>mdi-share-variant</v-icon>
+            </v-btn>
+          </template>
+           <v-card class="mx-auto" tile>
+            <v-list rounded>
+              <v-list-item-group color="primary">
+                <v-list-item>share to Group</v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-card>
+        </v-menu>
       </v-card-actions>
       <v-card-text class="adjust">40,000 likes</v-card-text>
-      <v-card-text
-        class="grey--text adjust"
-        style="font-size:12px;margin-bottom:-0.5rem;"
-      >View all comments</v-card-text>
+      <a class="grey--text commentlink ml-4" @click="commentdialog">View all comments</a>
       <v-hover v-slot:default="{ hover }">
         <v-layout style="margin-left:1rem;">
           <v-img
@@ -116,11 +124,13 @@
         ></v-text-field>
       </v-layout>
     </v-card>
+
+    <!-- All dialog -->
     <v-dialog max-width="500" v-model="imagedialog">
       <v-img class="image-wrapper" v-if="media" width="100%" height="100%" :src="images.profile"></v-img>
     </v-dialog>
 
-    <v-dialog v-model="dialogcomment" persistent max-width="600" >
+    <v-dialog v-model="dialogcomment" persistent max-width="600">
       <v-card class="mx-auto" max-width="600" tile>
         <v-list>
           <v-layout row>
@@ -140,8 +150,8 @@
               <v-list-item-content>
                 <v-list-item-title v-text="item.text"></v-list-item-title>
               </v-list-item-content>
-                <div class="flex-grow-1"></div>
-               <v-list-item-icon>
+              <div class="flex-grow-1"></div>
+              <v-list-item-icon>
                 <v-icon v-text="item.likeicon"></v-icon>
               </v-list-item-icon>
             </v-list-item>
@@ -155,18 +165,78 @@
 export default {
   data: () => ({
     items: [
-      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' ,name:'May'},
-      { text: 'Lisa is amazing', icon: 'mdi-account', likeicon: 'mdi-heart-outline' ,name:'June'},
-      { text: 'Yay new song is so good', icon: 'mdi-account', likeicon: 'mdi-heart-outline',name:'July' },
-      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' ,name:'August'},
-      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' ,name:'Sept'},
-      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline',name:'Oct' },
-      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' ,name:'Nov'},
-      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline',name:'Dec' },
-      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline',name:'Jan' },
-      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline',name:'Kyi' },
-      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline' ,name:'Sin'},
-      { text: 'I love lisa too <3', icon: 'mdi-account', likeicon: 'mdi-heart-outline',name:'Thant' },
+      {
+        text: 'I love lisa too <3',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'May',
+      },
+      {
+        text: 'Lisa is amazing',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'June',
+      },
+      {
+        text: 'Yay new song is so good',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'July',
+      },
+      {
+        text: 'I love lisa too <3',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'August',
+      },
+      {
+        text: 'I love lisa too <3',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'Sept',
+      },
+      {
+        text: 'I love lisa too <3',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'Oct',
+      },
+      {
+        text: 'I love lisa too <3',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'Nov',
+      },
+      {
+        text: 'I love lisa too <3',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'Dec',
+      },
+      {
+        text: 'I love lisa too <3',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'Jan',
+      },
+      {
+        text: 'I love lisa too <3',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'Kyi',
+      },
+      {
+        text: 'I love lisa too <3',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'Sin',
+      },
+      {
+        text: 'I love lisa too <3',
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'Thant',
+      },
     ],
     dialogcomment: false,
     imagedialog: false,
@@ -256,9 +326,15 @@ export default {
 .adjust {
   padding-top: 0% !important;
   margin-top: -0.5rem;
+  margin-bottom: -1rem;
 }
 #fileInput {
   display: none;
+}
+
+.commentlink {
+  font-size: 12px;
+  margin-bottom: -2.5rem;
 }
 </style>
 <style>
