@@ -120,12 +120,12 @@
           flat
           solo
           class="custom mr-5"
-          v-model="comment"
           clear-icon="mdi-close-circle"
           clearable
           append-outer-icon="mdi-send "
-          @click:append-outer="sendMessage"
+          @click="dialogcomment"
           placeholder="Add a comment..."
+
         ></v-text-field>
       </v-layout>
     </v-card>
@@ -153,7 +153,7 @@
                 <v-list-item-title v-text="item.name"></v-list-item-title>
               </v-list-item-content>
               <v-list-item-content>
-                <v-list-item-title v-text="item.text"></v-list-item-title>
+                <v-list-item-title v-text="item.text" ></v-list-item-title>
               </v-list-item-content>
               <div class="flex-grow-1"></div>
               <v-list-item-icon>
@@ -162,6 +162,17 @@
             </v-list-item>
           </v-list-item-group>
         </v-list>
+          <v-text-field
+          flat
+          solo
+          class="custom mr-5"
+          v-model="comments"
+          clear-icon="mdi-close-circle"
+          clearable
+          append-outer-icon="mdi-send "
+          @click:append-outer="sendMessages"
+          placeholder="Add a comment..."
+        ></v-text-field>
       </v-card>
     </v-dialog>
   </div>
@@ -171,78 +182,14 @@ export default {
   data: () => ({
     items: [
       {
-        text: 'I love lisa too <3',
+        text: 'wow',
         icon: 'mdi-account',
         likeicon: 'mdi-heart-outline',
         name: 'May',
       },
-      {
-        text: 'Lisa is amazing',
-        icon: 'mdi-account',
-        likeicon: 'mdi-heart-outline',
-        name: 'June',
-      },
-      {
-        text: 'Yay new song is so good',
-        icon: 'mdi-account',
-        likeicon: 'mdi-heart-outline',
-        name: 'July',
-      },
-      {
-        text: 'I love lisa too <3',
-        icon: 'mdi-account',
-        likeicon: 'mdi-heart-outline',
-        name: 'August',
-      },
-      {
-        text: 'I love lisa too <3',
-        icon: 'mdi-account',
-        likeicon: 'mdi-heart-outline',
-        name: 'Sept',
-      },
-      {
-        text: 'I love lisa too <3',
-        icon: 'mdi-account',
-        likeicon: 'mdi-heart-outline',
-        name: 'Oct',
-      },
-      {
-        text: 'I love lisa too <3',
-        icon: 'mdi-account',
-        likeicon: 'mdi-heart-outline',
-        name: 'Nov',
-      },
-      {
-        text: 'I love lisa too <3',
-        icon: 'mdi-account',
-        likeicon: 'mdi-heart-outline',
-        name: 'Dec',
-      },
-      {
-        text: 'I love lisa too <3',
-        icon: 'mdi-account',
-        likeicon: 'mdi-heart-outline',
-        name: 'Jan',
-      },
-      {
-        text: 'I love lisa too <3',
-        icon: 'mdi-account',
-        likeicon: 'mdi-heart-outline',
-        name: 'Kyi',
-      },
-      {
-        text: 'I love lisa too <3',
-        icon: 'mdi-account',
-        likeicon: 'mdi-heart-outline',
-        name: 'Sin',
-      },
-      {
-        text: 'I love lisa too <3',
-        icon: 'mdi-account',
-        likeicon: 'mdi-heart-outline',
-        name: 'Thant',
-      },
+
     ],
+    comments: null,
     likecounter: 1000,
     seen: true,
     dialogcomment: false,
@@ -270,6 +217,16 @@ export default {
     }
   }),
   methods: {
+
+    sendMessages() {
+      this.items.push({
+        text: this.comments,
+        icon: 'mdi-account',
+        likeicon: 'mdi-heart-outline',
+        name: 'May',
+      });
+      this.comments = '';
+    },
     sendMessage() {
       this.clearMessage();
       this.imageUrl = '';
