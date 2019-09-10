@@ -49,12 +49,12 @@
 
       <v-card-text style="font-weight:bold">Hello...........</v-card-text>
       <v-card-actions v-if="actions" class="adjust">
-        <v-btn icon color="black"  v-if="seen" @click="seen = !seen;likecounter+=1;">
+        <v-btn icon color="black" v-if="seen" @click="seen = !seen;likecounter+=1;">
           <v-icon>mdi-heart-outline</v-icon>
         </v-btn>
 
-        <v-btn icon color="red" v-else @click="seen = !seen; likecounter-=1;" >
-           <v-icon>mdi-heart</v-icon>
+        <v-btn icon color="red" v-else @click="seen = !seen; likecounter-=1;">
+          <v-icon>mdi-heart</v-icon>
         </v-btn>
         <v-btn icon color="black" @click="commentdialog">
           <v-icon>mdi-comment-processing-outline</v-icon>
@@ -72,7 +72,7 @@
               <v-icon>mdi-share-variant</v-icon>
             </v-btn>
           </template>
-           <v-card class="mx-auto" tile>
+          <v-card class="mx-auto" tile>
             <v-list rounded>
               <v-list-item-group color="primary">
                 <v-list-item>share to Group</v-list-item>
@@ -83,51 +83,31 @@
       </v-card-actions>
       <v-card-text class="adjust">{{likecounter}} likes</v-card-text>
       <a class="grey--text commentlink ml-4" @click="commentdialog">View all comments</a>
-      <v-hover v-slot:default="{ hover }">
-        <v-layout style="margin-left:1rem;">
-          <v-img
-            :src="imageUrl"
-            v-if="imageUrl"
-            class="mb-3 image"
-            :clearable="clearable"
-            max-width="159.53"
-            max-height="159.53"
-          >
-            <v-expand-transition>
-              <div v-if="hover" class="d-flex v-card--reveal display-3" style="height: 100%;">
-                <div class="flex-grow-1"></div>
-                <v-btn icon class="white" @click="removeimage">
-                  <v-icon>mdi-close</v-icon>
-                </v-btn>
-              </div>
-            </v-expand-transition>
-          </v-img>
-        </v-layout>
-      </v-hover>
-      <v-layout row>
-        <v-btn icon class="ml-5 mt-2" @click="pickFile" color="black">
-          <v-icon>mdi-camera-outline</v-icon>
-        </v-btn>
-        <input
+      <v-card flat @click="commentdialog">
+        <v-layout row>
+          <v-btn icon class="ml-5 mt-2" color="black">
+            <v-icon>mdi-camera-outline</v-icon>
+          </v-btn>
+          <!-- <input
           type="file"
           style="display: none"
           ref="image"
           accept="image/*"
           @change="onFilePicked"
-        />
+          />-->
 
-        <v-text-field
-          flat
-          solo
-          class="custom mr-5"
-          clear-icon="mdi-close-circle"
-          clearable
-          append-outer-icon="mdi-send "
-          @click="dialogcomment"
-          placeholder="Add a comment..."
-
-        ></v-text-field>
-      </v-layout>
+          <v-text-field
+            flat
+            solo
+            class="custom mr-5"
+            clear-icon="mdi-close-circle"
+            clearable
+            append-outer-icon="mdi-send "
+            placeholder="Add a comment..."
+            disabled
+          ></v-text-field>
+        </v-layout>
+      </v-card>
     </v-card>
 
     <!-- All dialog -->
@@ -135,8 +115,8 @@
       <v-img class="image-wrapper" v-if="media" width="100%" height="100%" :src="images.profile"></v-img>
     </v-dialog>
 
-    <v-dialog v-model="dialogcomment" persistent max-width="600">
-      <v-card class="mx-auto" max-width="600" tile>
+    <v-dialog v-model="dialogcomment" persistent width="800" flat class="commentdialog" >
+      <v-card  max-width="800" tile flat>
         <v-list>
           <v-layout row>
             <v-btn color="primary" class="mr-0" text disabled style="font-weight:bold;">Comments</v-btn>
@@ -149,30 +129,64 @@
               <v-list-item-icon>
                 <v-icon v-text="item.icon"></v-icon>
               </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title v-text="item.name"></v-list-item-title>
+              <v-list-item-content style="margin-left:-1rem;margin-right:-3rem;">
+                <v-list-item-title v-text="item.name" fixed></v-list-item-title>
               </v-list-item-content>
               <v-list-item-content>
-                <v-list-item-title v-text="item.text" ></v-list-item-title>
+                <v-list-item-title v-text="item.text"  class="multi-line" ></v-list-item-title>
               </v-list-item-content>
               <div class="flex-grow-1"></div>
               <v-list-item-icon>
-                <v-icon v-text="item.likeicon"></v-icon>
+                <v-icon v-text="item.likeicon" size="15"></v-icon>
               </v-list-item-icon>
             </v-list-item>
           </v-list-item-group>
         </v-list>
+        <v-layout row>
+          <v-btn icon class="ml-3 mt-2" @click="pickFile" color="black">
+            <v-icon>mdi-camera-outline</v-icon>
+          </v-btn>
+          <input
+            type="file"
+            style="display: none"
+            ref="image"
+            accept="image/*"
+            @change="onFilePicked"
+          />
           <v-text-field
-          flat
-          solo
-          class="custom mr-5"
-          v-model="comments"
-          clear-icon="mdi-close-circle"
-          clearable
-          append-outer-icon="mdi-send "
-          @click:append-outer="sendMessages"
-          placeholder="Add a comment..."
-        ></v-text-field>
+            flat
+            solo
+            class="custom mr-3"
+            v-model="comments"
+            clear-icon="mdi-close-circle"
+            clearable
+            append-outer-icon="mdi-send "
+            @click:append-outer="sendMessages"
+            placeholder="Add a comment..."
+
+          ></v-text-field>
+        </v-layout>
+        <v-hover v-slot:default="{ hover }">
+          <v-layout style="margin-left:1rem;">
+            <v-img
+              :src="imageUrl"
+              v-if="imageUrl"
+              class="mb-3 image"
+              :clearable="clearable"
+              max-width="159.53"
+              max-height="159.53"
+            >
+              <v-expand-transition>
+                <div v-if="hover" class="d-flex v-card--reveal display-3" style="height: 100%;">
+                  <div class="flex-grow-1"></div>
+                  <v-btn icon class="white" @click="removeimage">
+                    <v-icon>mdi-close</v-icon>
+                  </v-btn>
+                </div>
+              </v-expand-transition>
+            </v-img>
+          </v-layout>
+        </v-hover>
       </v-card>
     </v-dialog>
   </div>
@@ -187,7 +201,6 @@ export default {
         likeicon: 'mdi-heart-outline',
         name: 'May',
       },
-
     ],
     comments: null,
     likecounter: 1000,
@@ -217,7 +230,6 @@ export default {
     }
   }),
   methods: {
-
     sendMessages() {
       this.items.push({
         text: this.comments,
@@ -267,7 +279,6 @@ export default {
     commentdialog() {
       this.dialogcomment = true;
     },
-
   },
 };
 </script>
@@ -301,9 +312,16 @@ export default {
   font-size: 12px;
   margin-bottom: -2.5rem;
 }
+.multi-line {
+  white-space: pre-line;
+}
+
 </style>
 <style>
 .custom .v-input__control .v-text-field__details {
   margin-bottom: -6rem !important;
+}
+ .v-dialog .v-dialog--active .v-dialog--persistent{
+  overflow-y: unset !important;
 }
 </style>
