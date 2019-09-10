@@ -1,13 +1,13 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex xs12 sm5 md5 offset-xs0 offset-lg2>
+      <v-flex xs12 sm5 md5 offset-xs0 offset-lg1>
         <CreatePost />
       </v-flex>
     </v-layout>
     <Sidebar />
     <v-layout>
-      <v-flex xs12 sm5 md5 offset-xs0 offset-lg2>
+      <v-flex xs12 sm5 md5 offset-xs0 offset-lg1>
         <Post />
       </v-flex>
     </v-layout>
@@ -29,7 +29,7 @@ export default {
     Post,
     CreatePost,
     Messages,
-    Sidebar
+    Sidebar,
   },
 };
 </script>
