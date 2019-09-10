@@ -48,8 +48,11 @@
 
       <v-card-text style="font-weight:bold">Hello...........</v-card-text>
       <v-card-actions v-if="actions" class="adjust">
-        <v-btn icon color="black">
+        <v-btn icon color="black"  v-if="seen" v-on:click="seen = !seen">
           <v-icon>mdi-heart-outline</v-icon>
+        </v-btn>
+        <v-btn icon color="red" v-else v-on:click="seen = !seen">
+           <v-icon>mdi-heart</v-icon>
         </v-btn>
         <v-btn icon color="black" @click="commentdialog">
           <v-icon>mdi-comment-processing-outline</v-icon>
@@ -238,6 +241,7 @@ export default {
         name: 'Thant',
       },
     ],
+    seen: true,
     dialogcomment: false,
     imagedialog: false,
     commentimage: null,
