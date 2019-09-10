@@ -49,7 +49,7 @@
 
       <v-card-text style="font-weight:bold">Hello...........</v-card-text>
       <v-card-actions v-if="actions" class="adjust">
-        <v-btn icon color="black"  v-if="seen" @click="seen = !seen;likecounter=+1;">
+        <v-btn icon color="black"  v-if="seen" @click="seen = !seen;likecounter+=1;">
           <v-icon>mdi-heart-outline</v-icon>
         </v-btn>
 
@@ -243,7 +243,7 @@ export default {
         name: 'Thant',
       },
     ],
-    likecounter: 0,
+    likecounter: 1000,
     seen: true,
     dialogcomment: false,
     imagedialog: false,
