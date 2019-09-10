@@ -4,7 +4,7 @@
     <!-- Desktop size -->
     <v-layout v-if="!$vuetify.breakpoint.xs" row wrap>
       <v-col class="card_sidebar" justify="end">
-        <v-card>
+        <!-- <v-card>
           <v-toolbar color="#2C7873" dark flat>
             <template>
               <v-tabs class="tab_sidebar" v-model="model" left slider-color="#6FB98F" background-color="transparent">
@@ -67,9 +67,32 @@
               </v-card>
             </v-tab-item>
           </v-tabs-items>
+        </v-card> -->
+        <v-card class="card_sidebar_donator">
+    <v-carousel
+      :show-arrows="false"
+      :hide-delimiters="true"
+      :cycle="true"
+    >
+      <v-carousel-item
+        v-for="(color, i) in colors"
+        :key="color"
+      >
+        <v-sheet :color="color" height="100%" tile>
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            <div class="display-3">Slide {{ i + 1 }}</div>
+          </v-row>
+        </v-sheet>
+      </v-carousel-item>
+    </v-carousel>
         </v-card>
       </v-col>
     </v-layout>
+    
 
     <!-- Mobile size -->
     <v-layout class="hidden-sm-and-up" row wrap align-center>
@@ -83,8 +106,6 @@
         </v-card>
       </v-col>
     </v-layout>
-
-
     <v-layout v-if="instant_donate > 0" class="hidden-sm-and-up bs_instant_mobile" row wrap align-center>
       <v-bottom-sheet v-model="sheet">
         <template v-slot:activator="{ on }">
@@ -92,14 +113,14 @@
             Emergency Donation available
           </v-btn>
         </template>
-        <v-list>
-          <v-subheader>Instant need lists</v-subheader>
+        <v-list class="instant_classitems_mobile">
+          <v-subheader>Instant Need Lists</v-subheader>
           <v-list-item
             v-for="item in items"
             :key="item.title"
             @click="sheet = false"
           >
-            <v-list-item-avatar>
+            <v-list-item-avatar class="">
               <v-avatar size="32px" tile>
                 <img :class="{ selected: item.selected }" @click="selectedContact(i)" :src="item.avatar" alt="John"/>
               </v-avatar>
@@ -109,12 +130,21 @@
         </v-list>
       </v-bottom-sheet>
     </v-layout>
+
+
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
+        colors: [
+          'primary',
+          'secondary',
+          'yellow darken-2',
+          'red',
+          'orange',
+        ],
     instant_donate: 3,
     sheet: false,
     model: "tab-1",
@@ -182,7 +212,7 @@ export default {
 .card_sidebar {
   position: fixed;
   top: 0;
-  margin-top: 50px;
+  margin-top: 65px;
   right: 0;
   width: auto;
 }
@@ -213,6 +243,14 @@ export default {
   right: 0;
   width: auto;
 }
+.card_sidebar_donator .v-item-group{
+  max-height: 250px;
+}
+.card_sidebar_donator .v-window-item{
+  max-height: 250px;
+}
+
+
 
 /* Mobile */
 .card_sidebar_mobile {
@@ -242,5 +280,9 @@ export default {
   right: 0;
   margin: 0 2rem 1rem 0;
   z-index: 1;
+}
+.instant_classitems_mobile{
+  max-height: 300px;
+  overflow-y: scroll;
 }
 </style>
