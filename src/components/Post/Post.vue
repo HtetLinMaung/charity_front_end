@@ -1,3 +1,4 @@
+/* eslint-disable vue/valid-v-on */
 <template>
   <div class="post mt-5 mb-10">
     <v-card
@@ -48,10 +49,11 @@
 
       <v-card-text style="font-weight:bold">Hello...........</v-card-text>
       <v-card-actions v-if="actions" class="adjust">
-        <v-btn icon color="black"  v-if="seen" v-on:click="seen = !seen">
+        <v-btn icon color="black"  v-if="seen" @click="seen = !seen;likecounter=+1;">
           <v-icon>mdi-heart-outline</v-icon>
         </v-btn>
-        <v-btn icon color="red" v-else v-on:click="seen = !seen">
+
+        <v-btn icon color="red" v-else @click="seen = !seen; likecounter-=1;" >
            <v-icon>mdi-heart</v-icon>
         </v-btn>
         <v-btn icon color="black" @click="commentdialog">
@@ -79,7 +81,7 @@
           </v-card>
         </v-menu>
       </v-card-actions>
-      <v-card-text class="adjust">40,000 likes</v-card-text>
+      <v-card-text class="adjust">{{likecounter}} likes</v-card-text>
       <a class="grey--text commentlink ml-4" @click="commentdialog">View all comments</a>
       <v-hover v-slot:default="{ hover }">
         <v-layout style="margin-left:1rem;">
@@ -241,6 +243,7 @@ export default {
         name: 'Thant',
       },
     ],
+    likecounter: 0,
     seen: true,
     dialogcomment: false,
     imagedialog: false,
@@ -307,6 +310,7 @@ export default {
     commentdialog() {
       this.dialogcomment = true;
     },
+
   },
 };
 </script>
