@@ -4,10 +4,10 @@
     <!-- Desktop size -->
     <v-layout v-if="!$vuetify.breakpoint.xs" row wrap>
       <v-col class="card_sidebar" justify="end">
-        <!-- <v-card>
-          <v-toolbar color="#2C7873" dark flat>
+        <v-card>
+          <v-toolbar color="#63B995" dark flat>
             <template>
-              <v-tabs class="tab_sidebar" v-model="model" left slider-color="#6FB98F" background-color="transparent">
+              <v-tabs class="tab_sidebar" v-model="model" left slider-color="#423E28" background-color="transparent">
                 <v-tab :href="`#tab-${1}`">Stories</v-tab>
                 <v-tab :href="`#tab-${2}`">Instant Donation</v-tab>
               </v-tabs>
@@ -67,28 +67,19 @@
               </v-card>
             </v-tab-item>
           </v-tabs-items>
-        </v-card> -->
+        </v-card>
+        <br>
         <v-card class="card_sidebar_donator">
-    <v-carousel
-      :show-arrows="false"
-      :hide-delimiters="true"
-      :cycle="true"
-    >
-      <v-carousel-item
-        v-for="(color, i) in colors"
-        :key="color"
-      >
-        <v-sheet :color="color" height="100%" tile>
-          <v-row
-            class="fill-height"
-            align="center"
-            justify="center"
-          >
-            <div class="display-3">Slide {{ i + 1 }}</div>
-          </v-row>
-        </v-sheet>
-      </v-carousel-item>
-    </v-carousel>
+          <v-card-title><v-list-item-subtitle><v-icon color="#FFDF00" class="mb-1">mdi-trophy-award</v-icon> Our Main Donors</v-list-item-subtitle></v-card-title>
+          <v-carousel class="mx-auto" :show-arrows="false" :hide-delimiters="true" :cycle="true">
+            <v-carousel-item
+              v-for="(donor,i) in donors"
+              :key="i"
+              :src="donor.src"
+              reverse-transition="fade-transition"
+              transition="fade-transition"
+            ></v-carousel-item>
+          </v-carousel>
         </v-card>
       </v-col>
     </v-layout>
@@ -138,13 +129,6 @@
 <script>
 export default {
   data: () => ({
-        colors: [
-          'primary',
-          'secondary',
-          'yellow darken-2',
-          'red',
-          'orange',
-        ],
     instant_donate: 3,
     sheet: false,
     model: "tab-1",
@@ -196,7 +180,24 @@ export default {
           "<span class='text--primary'>Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.",
         selected: false
       }
-    ]
+    ],
+    donors: [
+      {
+        src: require("@/assets/donors/Screenshot_1.jpg"),
+      },
+      {
+        src: require("@/assets/donors/Screenshot_2.jpg"),
+      },
+      {
+        src: require("@/assets/donors/Screenshot_3.jpg"),
+      },
+      {
+        src: require("@/assets/donors/Screenshot_4.jpg"),
+      },
+      {
+        src: require("@/assets/donors/Screenshot_5.jpg"),
+      },
+    ],
   }),
   methods: {
     selectedContact(id) {
@@ -218,13 +219,13 @@ export default {
 }
 .card_sidebar .v-card {
   margin-right: 5rem;
-  border-radius: 10px 10px 7px 7px;
+  border-radius: 10px;
 }
 .card_sidebar .card_inside {
   margin-right: 0rem;
 }
 .card_sidebar .primary--text {
-  height: 250px;
+  height: 220px;
   overflow-y: scroll;
 }
 .card_sidebar ul {
@@ -232,6 +233,12 @@ export default {
 }
 .card_sidebar .tab_sidebar {
   width: 340px;
+}
+.card_sidebar .v-tabs-bar.theme--dark .v-tab:not(.v-tab--active):not(.v-tab--disabled){
+  color: #534F3B;
+}
+.card_sidebar .v-tab--active{
+  color: #423E28;
 }
 .card_sidebar .v-list--shaped {
   padding-right: 0px;
@@ -244,10 +251,16 @@ export default {
   width: auto;
 }
 .card_sidebar_donator .v-item-group{
-  max-height: 250px;
+  max-height: 200px;
+  max-width: 300px;
 }
-.card_sidebar_donator .v-window-item{
-  max-height: 250px;
+.card_sidebar_donator .v-image{
+  max-height: 200px;
+  max-width: 100%;
+}
+.card_sidebar_donator .v-card__title{
+  background-color: #63B995;
+  color: #423E28;
 }
 
 
