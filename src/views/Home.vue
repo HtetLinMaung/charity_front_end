@@ -8,7 +8,7 @@
     <Sidebar />
     <v-layout>
       <v-flex xs12 sm5 md5 offset-xs0 offset-lg1>
-        <Post />
+        <Posts />
       </v-flex>
     </v-layout>
     <v-layout>
@@ -19,14 +19,14 @@
 
 <script>
 // eslint-disable-next-line import/no-unresolved
-import Post from '../components/Post/Post.vue';
+import Posts from '@/views/Posts.vue';
 import CreatePost from '@/views/CreatePost.vue';
 import Messages from '@/views/Messages.vue';
 import Sidebar from '@/views/Sidebar.vue';
 
 export default {
   components: {
-    Post,
+    Posts,
     CreatePost,
     Messages,
     Sidebar,

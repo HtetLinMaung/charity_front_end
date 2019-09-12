@@ -34,6 +34,11 @@ let routes = [{
     name: 'lab',
     component: () => import('@/views/Lab.vue'),
   },
+  {
+    path:'/posts',
+    name:'posts',
+    component: () => import('@/views/Posts.vue'),
+  }
 ];
 
 const router = new Router({

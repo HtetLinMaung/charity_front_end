@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-5 createpost">
+  <div class="mt-5 mb-5 createpost">
     <v-card
       fixed-top
       class="mx-auto card"
