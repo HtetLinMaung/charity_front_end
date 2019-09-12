@@ -1,6 +1,6 @@
 <template>
   <div class="post mt-5 mb-10">
-      <v-col v-for="card in cards" :key="card.name">
+      <v-col v-for="card in cards" :key="card.id">
         <v-card
           class="mx-auto card mb-3"
           :flat="flat"
@@ -101,9 +101,9 @@
             </v-layout>
           </v-card>
         </v-card>
-          <v-dialog max-width="500" v-model="imagedialog">
-        <v-img class="image-wrapper" v-if="media" width="100%" height="100%" :src="card.postimage"></v-img>
-      </v-dialog>
+          <!-- <v-dialog max-width="500" v-model="imagedialog" :key="card.id">
+        <v-img class="image-wrapper" v-if="media" width="100%" height="100%" :src="card.postimage" :key="card.id"></v-img>
+      </v-dialog> -->
 
       <v-dialog v-model="dialogcomment" persistent width="800" flat class="commentdialog">
         <v-card max-width="800" tile flat>
@@ -114,7 +114,7 @@
               <v-btn color="primary" class="mr-0" text @click="dialogcomment = false">Cancel</v-btn>
             </v-layout>
             <v-divider></v-divider>
-            <v-list-item-group v-model="item" color="primary">
+            <v-list-item-group color="primary">
               <v-list-item v-for="(item, i) in items" :key="i">
                 <v-list-item-icon>
                   <v-icon v-text="item.icon"></v-icon>
@@ -191,6 +191,12 @@ export default {
         icon: "mdi-account",
         likeicon: "mdi-heart-outline",
         name: "May"
+      },
+       {
+        text: "wow",
+        icon: "mdi-account",
+        likeicon: "mdi-heart-outline",
+        name: "May"
       }
     ],
     comments: null,
@@ -216,34 +222,39 @@ export default {
     height: undefined,
     cards: [
       {
+          id:1,
         name: "Kyi Sin Thant",
         profile: require("@/assets/lisa.jpg"),
         postimage: require("@/assets/lisa.jpg"),
         postcaption: "Hello"
       },
       {
+          id:2,
         name: "Wai Yan",
-        profile: require("@/assets/lisa.jpg"),
-        postimage: require("@/assets/lisa.jpg"),
-        postcaption: "Hello"
+        profile: require("@/assets/WY.jpg"),
+        postimage: require("@/assets/WY.jpg"),
+        postcaption: "Hola"
       },
       {
+          id:3,
         name: "Aye Thu Zar",
         profile: require("@/assets/lisa.jpg"),
         postimage: require("@/assets/lisa.jpg"),
-        postcaption: "Hello"
+        postcaption: "Hi"
       },
       {
+          id:4,
         name: "Htet Lynn Maung",
-        profile: require("@/assets/lisa.jpg"),
-        postimage: require("@/assets/lisa.jpg"),
-        postcaption: "Hello"
+        profile: require("@/assets/HLM.png"),
+        postimage: require("@/assets/HLM.png"),
+        postcaption: "Kal Kal"
       },
       {
+          id:5,
         name: "Ben Ro",
-        profile: require("@/assets/lisa.jpg"),
-        postimage: require("@/assets/lisa.jpg"),
-        postcaption: "Hello"
+        profile: require("@/assets/BR.jpg"),
+        postimage: require("@/assets/BR.jpg"),
+        postcaption: "Hi"
       }
     ]
   }),
